@@ -12,13 +12,13 @@
 //     return 1;
 // }
 
-update :: (userdata: *void) -> s32 #c_call {
+update :: (userdata: u32) -> s32 #c_call {
     pd := cast(*PlaydateAPI) userdata;
 
-    pd.graphics.clear(cast(u64) LCDSolidColor.kColorBlack);
+    (cast(#type (color: LCDColor) -> void #c_call) (cast(*playdate_graphics) pd.graphics).clear)(cast(u64) LCDSolidColor.kColorBlack);
 
     // Draw a white rectangle in the middle of the screen
-    pd.graphics.fillRect(150, 110, 100, 40, cast(u64) LCDSolidColor.kColorWhite);
+    (cast(#type (x: s32, y: s32, width: s32, height: s32, color: LCDColor) -> void #c_call) (cast(*playdate_graphics) pd.graphics).fillRect)(150, 110, 100, 40, cast(u64) LCDSolidColor.kColorWhite);
 
     return 1;
     // ctx := cast(*Context) userdata;
@@ -29,11 +29,11 @@ update :: (userdata: *void) -> s32 #c_call {
 }
 
 #program_export
-eventHandler :: (playdate: *PlaydateAPI, event: PDSystemEvent, arg: u32) -> s32 #c_call {
+eventHandler :: (playdate: u32, event: PDSystemEvent, arg: u32) -> s32 #c_call {
     if event == .kEventInit {
         pd := cast(*PlaydateAPI) playdate;
 
-        pd.system.setUpdateCallback(update, pd);
+        (cast(#type (update: PDCallbackFunction, userdata: u32) -> void #c_call) (cast(*playdate_sys) pd.system).setUpdateCallback)(update, playdate);
     }
 
     return 0;

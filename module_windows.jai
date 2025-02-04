@@ -155,100 +155,100 @@ playdate_video :: struct {
 }
 
 playdate_graphics :: struct {
-    video:                  *playdate_video;
+    video:                  u32; // *playdate_video;
 
     // Drawing Functions
-    clear:                  #type (color: LCDColor) -> void #c_call;
-    setBackgroundColor:     #type (color: LCDSolidColor) -> void #c_call;
-    setStencil:             #type (stencil: *LCDBitmap) -> void #c_call; // deprecated in favor of setStencilImage, which adds a "tile" flag
-    setDrawMode:            #type (mode: LCDBitmapDrawMode) -> LCDBitmapDrawMode #c_call;
-    setDrawOffset:          #type (dx: s32, dy: s32) -> void #c_call;
-    setClipRect:            #type (x: s32, y: s32, width: s32, height: s32) -> void #c_call;
-    clearClipRect:          #type () -> void #c_call;
-    setLineCapStyle:        #type (endCapStyle: LCDLineCapStyle) -> void #c_call;
-    setFont:                #type (font: *LCDFont) -> void #c_call;
-    setTextTracking:        #type (tracking: s32) -> void #c_call;
-    pushContext:            #type (target: *LCDBitmap) -> void #c_call;
-    popContext:             #type () -> void #c_call;
+    clear:                  u32; // #type (color: LCDColor) -> void #c_call;
+    setBackgroundColor:     u32; // #type (color: LCDSolidColor) -> void #c_call;
+    setStencil:             u32; // #type (stencil: *LCDBitmap) -> void #c_call; // deprecated in favor of setStencilImage, which adds a "tile" flag
+    setDrawMode:            u32; // #type (mode: LCDBitmapDrawMode) -> LCDBitmapDrawMode #c_call;
+    setDrawOffset:          u32; // #type (dx: s32, dy: s32) -> void #c_call;
+    setClipRect:            u32; // #type (x: s32, y: s32, width: s32, height: s32) -> void #c_call;
+    clearClipRect:          u32; // #type () -> void #c_call;
+    setLineCapStyle:        u32; // #type (endCapStyle: LCDLineCapStyle) -> void #c_call;
+    setFont:                u32; // #type (font: *LCDFont) -> void #c_call;
+    setTextTracking:        u32; // #type (tracking: s32) -> void #c_call;
+    pushContext:            u32; // #type (target: *LCDBitmap) -> void #c_call;
+    popContext:             u32; // #type () -> void #c_call;
 
-    drawBitmap:             #type (bitmap: *LCDBitmap, x: s32, y: s32, flip: LCDBitmapFlip) -> void #c_call;
-    tileBitmap:             #type (bitmap: *LCDBitmap, x: s32, y: s32, width: s32, height: s32, flip: LCDBitmapFlip) -> void #c_call;
-    drawLine:               #type (x1: s32, y1: s32, x2: s32, y2: s32, width: s32, color: LCDColor) -> void #c_call;
-    fillTriangle:           #type (x1: s32, y1: s32, x2: s32, y2: s32, x3: s32, y3: s32, color: LCDColor) -> void #c_call;
-    drawRect:               #type (x: s32, y: s32, width: s32, height: s32, color: LCDColor) -> void #c_call;
-    fillRect:               #type (x: s32, y: s32, width: s32, height: s32, color: LCDColor) -> void #c_call;
-    drawEllipse:            #type (x: s32, y: s32, width: s32, height: s32, lineWidth: s32, startAngle: float, endAngle: float, color: LCDColor) -> void #c_call; // stroked inside the rect
-    fillEllipse:            #type (x: s32, y: s32, width: s32, height: s32, startAngle: float, endAngle: float, color: LCDColor) -> void #c_call;
-    drawScaledBitmap:       #type (bitmap: *LCDBitmap, x: s32, y: s32, xscale: float, yscale: float) -> void #c_call;
-    drawText:               #type (text: *void, len: u64, encoding: PDStringEncoding, x: s32, y: s32) -> s32 #c_call;
+    drawBitmap:             u32; // #type (bitmap: *LCDBitmap, x: s32, y: s32, flip: LCDBitmapFlip) -> void #c_call;
+    tileBitmap:             u32; // #type (bitmap: *LCDBitmap, x: s32, y: s32, width: s32, height: s32, flip: LCDBitmapFlip) -> void #c_call;
+    drawLine:               u32; // #type (x1: s32, y1: s32, x2: s32, y2: s32, width: s32, color: LCDColor) -> void #c_call;
+    fillTriangle:           u32; // #type (x1: s32, y1: s32, x2: s32, y2: s32, x3: s32, y3: s32, color: LCDColor) -> void #c_call;
+    drawRect:               u32; // #type (x: s32, y: s32, width: s32, height: s32, color: LCDColor) -> void #c_call;
+    fillRect:               u32; // #type (x: s32, y: s32, width: s32, height: s32, color: LCDColor) -> void #c_call;
+    drawEllipse:            u32; // #type (x: s32, y: s32, width: s32, height: s32, lineWidth: s32, startAngle: float, endAngle: float, color: LCDColor) -> void #c_call; // stroked inside the rect
+    fillEllipse:            u32; // #type (x: s32, y: s32, width: s32, height: s32, startAngle: float, endAngle: float, color: LCDColor) -> void #c_call;
+    drawScaledBitmap:       u32; // #type (bitmap: *LCDBitmap, x: s32, y: s32, xscale: float, yscale: float) -> void #c_call;
+    drawText:               u32; // #type (text: *void, len: u64, encoding: PDStringEncoding, x: s32, y: s32) -> s32 #c_call;
 
     // LCDBitmap
-    newBitmap:              #type (width: s32, height: s32, bgcolor: LCDColor) -> *LCDBitmap #c_call;
-    freeBitmap:             #type (unknown0: *LCDBitmap) -> void #c_call;
-    loadBitmap:             #type (path: *u8, outerr: **u8) -> *LCDBitmap #c_call;
-    copyBitmap:             #type (bitmap: *LCDBitmap) -> *LCDBitmap #c_call;
-    loadIntoBitmap:         #type (path: *u8, bitmap: *LCDBitmap, outerr: **u8) -> void #c_call;
-    getBitmapData:          #type (bitmap: *LCDBitmap, width: *s32, height: *s32, rowbytes: *s32, mask: **u8, data: **u8) -> void #c_call;
-    clearBitmap:            #type (bitmap: *LCDBitmap, bgcolor: LCDColor) -> void #c_call;
-    rotatedBitmap:          #type (bitmap: *LCDBitmap, rotation: float, xscale: float, yscale: float, allocedSize: *s32) -> *LCDBitmap #c_call;
+    newBitmap:              u32; // #type (width: s32, height: s32, bgcolor: LCDColor) -> *LCDBitmap #c_call;
+    freeBitmap:             u32; // #type (unknown0: *LCDBitmap) -> void #c_call;
+    loadBitmap:             u32; // #type (path: *u8, outerr: **u8) -> *LCDBitmap #c_call;
+    copyBitmap:             u32; // #type (bitmap: *LCDBitmap) -> *LCDBitmap #c_call;
+    loadIntoBitmap:         u32; // #type (path: *u8, bitmap: *LCDBitmap, outerr: **u8) -> void #c_call;
+    getBitmapData:          u32; // #type (bitmap: *LCDBitmap, width: *s32, height: *s32, rowbytes: *s32, mask: **u8, data: **u8) -> void #c_call;
+    clearBitmap:            u32; // #type (bitmap: *LCDBitmap, bgcolor: LCDColor) -> void #c_call;
+    rotatedBitmap:          u32; // #type (bitmap: *LCDBitmap, rotation: float, xscale: float, yscale: float, allocedSize: *s32) -> *LCDBitmap #c_call;
 
     // LCDBitmapTable
-    newBitmapTable:         #type (count: s32, width: s32, height: s32) -> *LCDBitmapTable #c_call;
-    freeBitmapTable:        #type (table: *LCDBitmapTable) -> void #c_call;
-    loadBitmapTable:        #type (path: *u8, outerr: **u8) -> *LCDBitmapTable #c_call;
-    loadIntoBitmapTable:    #type (path: *u8, table: *LCDBitmapTable, outerr: **u8) -> void #c_call;
-    getTableBitmap:         #type (table: *LCDBitmapTable, idx: s32) -> *LCDBitmap #c_call;
+    newBitmapTable:         u32; // #type (count: s32, width: s32, height: s32) -> *LCDBitmapTable #c_call;
+    freeBitmapTable:        u32; // #type (table: *LCDBitmapTable) -> void #c_call;
+    loadBitmapTable:        u32; // #type (path: *u8, outerr: **u8) -> *LCDBitmapTable #c_call;
+    loadIntoBitmapTable:    u32; // #type (path: *u8, table: *LCDBitmapTable, outerr: **u8) -> void #c_call;
+    getTableBitmap:         u32; // #type (table: *LCDBitmapTable, idx: s32) -> *LCDBitmap #c_call;
 
     // LCDFont
-    loadFont:               #type (path: *u8, outErr: **u8) -> *LCDFont #c_call;
-    getFontPage:            #type (font: *LCDFont, c: u32) -> *LCDFontPage #c_call;
-    getPageGlyph:           #type (page: *LCDFontPage, c: u32, bitmap: **LCDBitmap, advance: *s32) -> *LCDFontGlyph #c_call;
-    getGlyphKerning:        #type (glyph: *LCDFontGlyph, glyphcode: u32, nextcode: u32) -> s32 #c_call;
-    getTextWidth:           #type (font: *LCDFont, text: *void, len: u64, encoding: PDStringEncoding, tracking: s32) -> s32 #c_call;
+    loadFont:               u32; // #type (path: *u8, outErr: **u8) -> *LCDFont #c_call;
+    getFontPage:            u32; // #type (font: *LCDFont, c: u32) -> *LCDFontPage #c_call;
+    getPageGlyph:           u32; // #type (page: *LCDFontPage, c: u32, bitmap: **LCDBitmap, advance: *s32) -> *LCDFontGlyph #c_call;
+    getGlyphKerning:        u32; // #type (glyph: *LCDFontGlyph, glyphcode: u32, nextcode: u32) -> s32 #c_call;
+    getTextWidth:           u32; // #type (font: *LCDFont, text: *void, len: u64, encoding: PDStringEncoding, tracking: s32) -> s32 #c_call;
 
-    getFrame:               #type () -> *u8 #c_call; // row stride = LCD_ROWSIZE
-    getDisplayFrame:        #type () -> *u8 #c_call; // row stride = LCD_ROWSIZE
-    getDebugBitmap:         #type () -> *LCDBitmap #c_call; // valid in simulator only, function is NULL on device
-    copyFrameBufferBitmap:  #type () -> *LCDBitmap #c_call;
-    markUpdatedRows:        #type (start: s32, end: s32) -> void #c_call;
-    display:                #type () -> void #c_call;
+    getFrame:               u32; // #type () -> *u8 #c_call; // row stride = LCD_ROWSIZE
+    getDisplayFrame:        u32; // #type () -> *u8 #c_call; // row stride = LCD_ROWSIZE
+    getDebugBitmap:         u32; // #type () -> *LCDBitmap #c_call; // valid in simulator only, function is NULL on device
+    copyFrameBufferBitmap:  u32; // #type () -> *LCDBitmap #c_call;
+    markUpdatedRows:        u32; // #type (start: s32, end: s32) -> void #c_call;
+    display:                u32; // #type () -> void #c_call;
 
     // misc util.
-    setColorToPattern:      #type (color: *LCDColor, bitmap: *LCDBitmap, x: s32, y: s32) -> void #c_call;
-    checkMaskCollision:     #type (bitmap1: *LCDBitmap, x1: s32, y1: s32, flip1: LCDBitmapFlip, bitmap2: *LCDBitmap, x2: s32, y2: s32, flip2: LCDBitmapFlip, rect: LCDRect) -> s32 #c_call;
+    setColorToPattern:      u32; // #type (color: *LCDColor, bitmap: *LCDBitmap, x: s32, y: s32) -> void #c_call;
+    checkMaskCollision:     u32; // #type (bitmap1: *LCDBitmap, x1: s32, y1: s32, flip1: LCDBitmapFlip, bitmap2: *LCDBitmap, x2: s32, y2: s32, flip2: LCDBitmapFlip, rect: LCDRect) -> s32 #c_call;
 
     // 1.1
-    setScreenClipRect:      #type (x: s32, y: s32, width: s32, height: s32) -> void #c_call;
+    setScreenClipRect:      u32; // #type (x: s32, y: s32, width: s32, height: s32) -> void #c_call;
 
     // 1.1.1
-    fillPolygon:            #type (nPoints: s32, coords: *s32, color: LCDColor, fillrule: LCDPolygonFillRule) -> void #c_call;
-    getFontHeight:          #type (font: *LCDFont) -> u8 #c_call;
+    fillPolygon:            u32; // #type (nPoints: s32, coords: *s32, color: LCDColor, fillrule: LCDPolygonFillRule) -> void #c_call;
+    getFontHeight:          u32; // #type (font: *LCDFont) -> u8 #c_call;
 
     // 1.7
-    getDisplayBufferBitmap: #type () -> *LCDBitmap #c_call;
-    drawRotatedBitmap:      #type (bitmap: *LCDBitmap, x: s32, y: s32, rotation: float, centerx: float, centery: float, xscale: float, yscale: float) -> void #c_call;
-    setTextLeading:         #type (lineHeightAdustment: s32) -> void #c_call;
+    getDisplayBufferBitmap: u32; // #type () -> *LCDBitmap #c_call;
+    drawRotatedBitmap:      u32; // #type (bitmap: *LCDBitmap, x: s32, y: s32, rotation: float, centerx: float, centery: float, xscale: float, yscale: float) -> void #c_call;
+    setTextLeading:         u32; // #type (lineHeightAdustment: s32) -> void #c_call;
 
     // 1.8
-    setBitmapMask:          #type (bitmap: *LCDBitmap, mask: *LCDBitmap) -> s32 #c_call;
-    getBitmapMask:          #type (bitmap: *LCDBitmap) -> *LCDBitmap #c_call;
+    setBitmapMask:          u32; // #type (bitmap: *LCDBitmap, mask: *LCDBitmap) -> s32 #c_call;
+    getBitmapMask:          u32; // #type (bitmap: *LCDBitmap) -> *LCDBitmap #c_call;
 
     // 1.10
-    setStencilImage:        #type (stencil: *LCDBitmap, tile: s32) -> void #c_call;
+    setStencilImage:        u32; // #type (stencil: *LCDBitmap, tile: s32) -> void #c_call;
 
     // 1.12
-    makeFontFromData:       #type (data: *LCDFontData, wide: s32) -> *LCDFont #c_call;
+    makeFontFromData:       u32; // #type (data: *LCDFontData, wide: s32) -> *LCDFont #c_call;
 
     // 2.1
-    getTextTracking:        #type () -> s32 #c_call;
+    getTextTracking:        u32; // #type () -> s32 #c_call;
 
     // 2.5
-    setPixel:               #type (x: s32, y: s32, c: LCDColor) -> void #c_call;
-    getBitmapPixel:         #type (bitmap: *LCDBitmap, x: s32, y: s32) -> LCDSolidColor #c_call;
-    getBitmapTableInfo:     #type (table: *LCDBitmapTable, count: *s32, width: *s32) -> void #c_call;
+    setPixel:               u32; // #type (x: s32, y: s32, c: LCDColor) -> void #c_call;
+    getBitmapPixel:         u32; // #type (bitmap: *LCDBitmap, x: s32, y: s32) -> LCDSolidColor #c_call;
+    getBitmapTableInfo:     u32; // #type (table: *LCDBitmapTable, count: *s32, width: *s32) -> void #c_call;
 
     // 2.6
-    drawTextInRect:         #type (text: *void, len: u64, encoding: PDStringEncoding, x: s32, y: s32, width: s32, height: s32, wrap: PDTextWrappingMode, align: PDTextAlignment) -> void #c_call;
+    drawTextInRect:         u32; // #type (text: *void, len: u64, encoding: PDStringEncoding, x: s32, y: s32, width: s32, height: s32, wrap: PDTextWrappingMode, align: PDTextAlignment) -> void #c_call;
 }
 
 PDButtons :: enum s32 {
@@ -301,70 +301,70 @@ PDPeripherals :: enum s32 {
     kAllPeripherals :: AllPeripherals;
 }
 
-PDCallbackFunction :: #type (userdata: *void) -> s32 #c_call;
+PDCallbackFunction :: #type (userdata: u32) -> s32 #c_call;
 PDMenuItemCallbackFunction :: #type (userdata: *void) -> void #c_call;
 PDButtonCallbackFunction :: #type (button: PDButtons, down: s32, when: u32, userdata: *void) -> s32 #c_call;
 
 playdate_sys :: struct {
-    realloc:                    #type (ptr: *void, size: u64) -> *void #c_call; // ptr = NULL -> malloc, size = 0 -> free
-    formatString:               #type (ret: **u8, fmt: *u8, __args: ..Any) -> s32 #c_call;
-    logToConsole:               #type (fmt: *u8, __args: ..Any) -> void #c_call;
-    error:                      #type (fmt: *u8, __args: ..Any) -> void #c_call;
-    getLanguage:                #type () -> PDLanguage #c_call;
-    getCurrentTimeMilliseconds: #type () -> u32 #c_call;
-    getSecondsSinceEpoch:       #type (milliseconds: *u32) -> u32 #c_call;
-    drawFPS:                    #type (x: s32, y: s32) -> void #c_call;
+    realloc:                    u32; // #type (ptr: *void, size: u64) -> *void #c_call; // ptr = NULL -> malloc, size = 0 -> free
+    formatString:               u32; // #type (ret: **u8, fmt: *u8, __args: ..Any) -> s32 #c_call;
+    logToConsole:               u32; // #type (fmt: *u8, __args: ..Any) -> void #c_call;
+    error:                      u32; // #type (fmt: *u8, __args: ..Any) -> void #c_call;
+    getLanguage:                u32; // #type () -> PDLanguage #c_call;
+    getCurrentTimeMilliseconds: u32; // #type () -> u32 #c_call;
+    getSecondsSinceEpoch:       u32; // #type (milliseconds: *u32) -> u32 #c_call;
+    drawFPS:                    u32; // #type (x: s32, y: s32) -> void #c_call;
 
-    setUpdateCallback:          #type (update: PDCallbackFunction, userdata: *void) -> void #c_call;
-    getButtonState:             #type (current: *PDButtons, pushed: *PDButtons, released: *PDButtons) -> void #c_call;
-    setPeripheralsEnabled:      #type (mask: PDPeripherals) -> void #c_call;
-    getAccelerometer:           #type (outx: *float, outy: *float, outz: *float) -> void #c_call;
+    setUpdateCallback:          u32; // #type (update: PDCallbackFunction, userdata: u32) -> void #c_call;
+    getButtonState:             u32; // #type (current: *PDButtons, pushed: *PDButtons, released: *PDButtons) -> void #c_call;
+    setPeripheralsEnabled:      u32; // #type (mask: PDPeripherals) -> void #c_call;
+    getAccelerometer:           u32; // #type (outx: *float, outy: *float, outz: *float) -> void #c_call;
 
-    getCrankChange:             #type () -> float #c_call;
-    getCrankAngle:              #type () -> float #c_call;
-    isCrankDocked:              #type () -> s32 #c_call;
-    setCrankSoundsDisabled:     #type (flag: s32) -> s32 #c_call; // returns previous setting
+    getCrankChange:             u32; // #type () -> float #c_call;
+    getCrankAngle:              u32; // #type () -> float #c_call;
+    isCrankDocked:              u32; // #type () -> s32 #c_call;
+    setCrankSoundsDisabled:     u32; // #type (flag: s32) -> s32 #c_call; // returns previous setting
 
-    getFlipped:                 #type () -> s32 #c_call;
-    setAutoLockDisabled:        #type (disable: s32) -> void #c_call;
+    getFlipped:                 u32; // #type () -> s32 #c_call;
+    setAutoLockDisabled:        u32; // #type (disable: s32) -> void #c_call;
 
-    setMenuImage:               #type (bitmap: *LCDBitmap, xOffset: s32) -> void #c_call;
-    addMenuItem:                #type (title: *u8, callback: PDMenuItemCallbackFunction, userdata: *void) -> *PDMenuItem #c_call;
-    addCheckmarkMenuItem:       #type (title: *u8, value: s32, callback: PDMenuItemCallbackFunction, userdata: *void) -> *PDMenuItem #c_call;
-    addOptionsMenuItem:         #type (title: *u8, optionTitles: **u8, optionsCount: s32, f: PDMenuItemCallbackFunction, userdata: *void) -> *PDMenuItem #c_call;
-    removeAllMenuItems:         #type () -> void #c_call;
-    removeMenuItem:             #type (menuItem: *PDMenuItem) -> void #c_call;
-    getMenuItemValue:           #type (menuItem: *PDMenuItem) -> s32 #c_call;
-    setMenuItemValue:           #type (menuItem: *PDMenuItem, value: s32) -> void #c_call;
-    getMenuItemTitle:           #type (menuItem: *PDMenuItem) -> *u8 #c_call;
-    setMenuItemTitle:           #type (menuItem: *PDMenuItem, title: *u8) -> void #c_call;
-    getMenuItemUserdata:        #type (menuItem: *PDMenuItem) -> *void #c_call;
-    setMenuItemUserdata:        #type (menuItem: *PDMenuItem, ud: *void) -> void #c_call;
+    setMenuImage:               u32; // #type (bitmap: *LCDBitmap, xOffset: s32) -> void #c_call;
+    addMenuItem:                u32; // #type (title: *u8, callback: PDMenuItemCallbackFunction, userdata: *void) -> *PDMenuItem #c_call;
+    addCheckmarkMenuItem:       u32; // #type (title: *u8, value: s32, callback: PDMenuItemCallbackFunction, userdata: *void) -> *PDMenuItem #c_call;
+    addOptionsMenuItem:         u32; // #type (title: *u8, optionTitles: **u8, optionsCount: s32, f: PDMenuItemCallbackFunction, userdata: *void) -> *PDMenuItem #c_call;
+    removeAllMenuItems:         u32; // #type () -> void #c_call;
+    removeMenuItem:             u32; // #type (menuItem: *PDMenuItem) -> void #c_call;
+    getMenuItemValue:           u32; // #type (menuItem: *PDMenuItem) -> s32 #c_call;
+    setMenuItemValue:           u32; // #type (menuItem: *PDMenuItem, value: s32) -> void #c_call;
+    getMenuItemTitle:           u32; // #type (menuItem: *PDMenuItem) -> *u8 #c_call;
+    setMenuItemTitle:           u32; // #type (menuItem: *PDMenuItem, title: *u8) -> void #c_call;
+    getMenuItemUserdata:        u32; // #type (menuItem: *PDMenuItem) -> *void #c_call;
+    setMenuItemUserdata:        u32; // #type (menuItem: *PDMenuItem, ud: *void) -> void #c_call;
 
-    getReduceFlashing:          #type () -> s32 #c_call;
+    getReduceFlashing:          u32; // #type () -> s32 #c_call;
 
     // 1.1
-    getElapsedTime:             #type () -> float #c_call;
-    resetElapsedTime:           #type () -> void #c_call;
+    getElapsedTime:             u32; // #type () -> float #c_call;
+    resetElapsedTime:           u32; // #type () -> void #c_call;
 
     // 1.4
-    getBatteryPercentage:       #type () -> float #c_call;
-    getBatteryVoltage:          #type () -> float #c_call;
+    getBatteryPercentage:       u32; // #type () -> float #c_call;
+    getBatteryVoltage:          u32; // #type () -> float #c_call;
 
     // 1.13
-    getTimezoneOffset:          #type () -> s32 #c_call;
-    shouldDisplay24HourTime:    #type () -> s32 #c_call;
-    convertEpochToDateTime:     #type (epoch: u32, datetime: *PDDateTime) -> void #c_call;
-    convertDateTimeToEpoch:     #type (datetime: *PDDateTime) -> u32 #c_call;
+    getTimezoneOffset:          u32; // #type () -> s32 #c_call;
+    shouldDisplay24HourTime:    u32; // #type () -> s32 #c_call;
+    convertEpochToDateTime:     u32; // #type (epoch: u32, datetime: *PDDateTime) -> void #c_call;
+    convertDateTimeToEpoch:     u32; // #type (datetime: *PDDateTime) -> u32 #c_call;
 
     // 2.0
-    clearICache:                #type () -> void #c_call;
+    clearICache:                u32; // #type () -> void #c_call;
 
     // 2.4
-    setButtonCallback:          #type (cb: PDButtonCallbackFunction, buttonud: *void, queuesize: s32) -> void #c_call;
-    setSerialMessageCallback:   #type (callback: #type (data: *u8) -> void #c_call) -> void #c_call;
-    vaFormatString:             *void /* function type contained C va_list argument */;
-    parseString:                #type (str: *u8, format: *u8, __args: ..Any) -> s32 #c_call;
+    setButtonCallback:          u32; // #type (cb: PDButtonCallbackFunction, buttonud: *void, queuesize: s32) -> void #c_call;
+    setSerialMessageCallback:   u32; // #type (callback: #type (data: *u8) -> void #c_call) -> void #c_call;
+    vaFormatString:             u32; // *void /* function type contained C va_list argument */;
+    parseString:                u32; // #type (str: *u8, format: *u8, __args: ..Any) -> s32 #c_call;
 }
 
 lua_State :: *void;
@@ -1365,15 +1365,15 @@ playdate_scoreboards :: struct {
 }
 
 PlaydateAPI :: struct {
-    system:      *playdate_sys;
-    file:        *playdate_file;
-    graphics:    *playdate_graphics;
-    sprite:      *playdate_sprite;
-    display:     *playdate_display;
-    sound:       *playdate_sound;
-    lua:         *playdate_lua;
-    json:        *playdate_json;
-    scoreboards: *playdate_scoreboards;
+    system:      u32; // *playdate_sys;
+    file:        u32; // *playdate_file;
+    graphics:    u32; // *playdate_graphics;
+    sprite:      u32; // *playdate_sprite;
+    display:     u32; // *playdate_display;
+    sound:       u32; // *playdate_sound;
+    lua:         u32; // *playdate_lua;
+    json:        u32; // *playdate_json;
+    scoreboards: u32; // *playdate_scoreboards;
 }
 
 PDSystemEvent :: enum s32 {

@@ -208,6 +208,8 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
                     run_command("pdc", "--strip", output_path, tprint("%.pdx", output_name));
 
                     print("Done building pdx file.\n");
+
+
                     // print("Installing pdx game...\n");
 
                     // run_command("pdutil", "install", tprint("%.pdx", output_name));
@@ -221,7 +223,7 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
 
                     // print("Done building pdx file.\n");
 
-                    break;
+                    // break;
 
                     // if should_launch_mirror && !is_mirror_running() {
                     //     print("Launching mirror...\n");
