@@ -1,9 +1,7 @@
 
-Playdate :: #import "PlaydateJai";
-#poke_name Playdate eventHandler;
-using Playdate;
+#import "PlaydateJai";
 
-pd: *PlaydateAPI;
+// pd: *PlaydateAPI;
 
 // update :: () -> s32 {
 //     pd.graphics.clear(cast(u64) LCDSolidColor.kColorBlack);
@@ -15,6 +13,8 @@ pd: *PlaydateAPI;
 // }
 
 update :: (userdata: *void) -> s32 #c_call {
+    pd := cast(*PlaydateAPI) userdata;
+
     pd.graphics.clear(cast(u64) LCDSolidColor.kColorBlack);
 
     // Draw a white rectangle in the middle of the screen
@@ -28,11 +28,12 @@ update :: (userdata: *void) -> s32 #c_call {
     // return 1;
 }
 
-eventHandler :: (playdate: *PlaydateAPI, event: PDSystemEvent, arg: u32) -> s32 {
+#program_export
+eventHandler :: (playdate: *PlaydateAPI, event: PDSystemEvent, arg: u32) -> s32 #c_call {
     if event == .kEventInit {
-        pd = playdate;
+        pd := cast(*PlaydateAPI) playdate;
 
-        pd.system.setUpdateCallback(update, null);
+        pd.system.setUpdateCallback(update, pd);
     }
 
     return 0;

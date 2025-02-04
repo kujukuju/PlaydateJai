@@ -5,8 +5,6 @@
 #import "String";
 #import "Process";
 
-// https://github.com/pd-rs/crank/blob/main/src/main.rs
-
 #run build(false, false, false, "C:/Program Files/PlaydateSDK");
 
 build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string, output_path: string = "build", output_name: string = "game", should_launch_mirror: bool = true) {
@@ -17,53 +15,6 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
 
     workspace := compiler_create_workspace("Playdate Game");
     options := get_build_options(workspace);
-    if simulator {
-        if file_exists(tprint("%.pdx/pdex.dll", output_name)) {
-            file_move(tprint("%.pdx/pdex.dll", output_name), tprint("%.pdx/pdex_old.dll", output_name));
-            file_delete(tprint("%.pdx/pdex_old.dll", output_name));
-        }
-
-        options.output_type = .DYNAMIC_LIBRARY;
-        // options.output_executable_name = output_name;
-        // options.append_executable_filename_extension = false;
-        options.output_path = output_path;
-        options.output_executable_name = "pdex";
-    } else {
-        options.output_type = .EXECUTABLE;
-        options.cpu_target = .CUSTOM;
-        options.os_target = .NN_SWITCH;
-        options.runtime_support_definitions = .OMIT;
-        options.enable_bytecode_inliner = false;
-        options.enable_bytecode_deduplication = false;
-        options.entry_point_name = "eventHandlerShim";
-
-        options.dead_code_elimination = .NONE;
-
-        options.llvm_options.output_bitcode_before_optimizations = true;
-
-        options.output_executable_name = "pdex";
-
-        // options.prevent_compile_time_calls_from_runtime = true;
-
-        options.llvm_options.target_system_triple = "armv7em-none-eabihf";
-        options.llvm_options.target_system_cpu = "cortex-m7";
-        // options.llvm_options.target_system_features = "+thumb2,+vfp4";
-        options.llvm_options.output_bitcode = true;
-        options.llvm_options.function_sections = true;
-
-        // options.additional_linker_arguments = .[
-        //     "-nostartfiles",
-        //     tprint("-T%/C_API/buildsupport/link_map.ld", sdk_path),
-        //     // "-T/path/to/SDK/C_API/buildsupport/link_map.ld",
-        //     "--entry", "eventHandlerShim",
-        //     "-mthumb", "-mcpu=cortex-m7", "-mfloat-abi=hard", "-mfpu=fpv5-sp-d16", "-D__FPU_USED=1",
-        //     "-Wl,-Map=game.map,--cref,--gc-sections,--no-warn-mismatch,--emit-relocs,--strip-all,-R,.comment,-g",
-        // ];
-    }
-    // 1 mb
-    // options.temporary_storage_size = 1048576;
-    options.temporary_storage_size = 1024;
-    options.import_path = .[tprint("%../modules", #filepath), "C:/jai/modules", tprint("%../../", #filepath), "/mnt/c/jai/modules"];
 
     if release || optimized_only {
         set_optimization(*options, .VERY_OPTIMIZED);
@@ -71,6 +22,48 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
         // options.backend = .X64;
         set_optimization(*options, .DEBUG);
     }
+
+    if simulator {
+        if file_exists(tprint("%.pdx/pdex.dll", output_name)) {
+            file_move(tprint("%.pdx/pdex.dll", output_name), tprint("%.pdx/pdex_old.dll", output_name));
+            file_delete(tprint("%.pdx/pdex_old.dll", output_name));
+        }
+
+        options.output_type = .DYNAMIC_LIBRARY;
+        // options.append_executable_filename_extension = false;
+        options.output_path = output_path;
+        options.output_executable_name = "pdex";
+    } else {
+        options.output_type = .STATIC_LIBRARY;
+        options.cpu_target = .CUSTOM;
+        options.os_target = .NN_SWITCH;
+        options.emit_debug_info = .DWARF;
+        options.use_custom_link_command = true;
+        options.runtime_support_definitions = .OMIT;
+        options.enable_bytecode_inliner = false;
+        options.enable_bytecode_deduplication = false;
+        options.entry_point_name = "eventHandlerShim";
+
+        options.dead_code_elimination = .NONE;
+        options.lazy_foreign_function_lookups = true;
+
+        options.output_executable_name = "pdex";
+
+        // options.prevent_compile_time_calls_from_runtime = true;
+
+        options.llvm_options.target_system_triple = "thumbv7em-none-eabihf";
+        options.llvm_options.target_system_cpu = "cortex-m7";
+        options.llvm_options.target_system_features = "-fp64";
+        options.llvm_options.output_bitcode = true;
+        options.llvm_options.output_bitcode_before_optimizations = true;
+        options.llvm_options.function_sections = true;
+        options.llvm_options.enable_split_modules = false;
+    }
+    // 1 mb
+    // options.temporary_storage_size = 1048576;
+    options.temporary_storage_size = 1024;
+    options.import_path = .[tprint("%../modules", #filepath), "C:/jai/modules", tprint("%../../", #filepath), "/mnt/c/jai/modules"];
+
 
     compiler_begin_intercept(workspace);
     defer compiler_end_intercept(workspace);
@@ -116,6 +109,7 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
                     contains_asm := false;
                     for it.subexpressions {
                         if it.kind == .ASM {
+                            // we won't do this for now
                             // contains_asm = true;
                         }
                     }
@@ -129,23 +123,53 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
                     }
                 }
 
-            case .COMPLETE;
-                // create pdx
+            case .PHASE;
+                phase := cast(*Message_Phase) message;
 
-                delete_directory(tprint("%.pdx", output_name));
+                if phase.phase == .READY_FOR_CUSTOM_LINK_COMMAND {
+                    assert(!simulator, "Simulator was ready for custom link which shouldn't happen.\n");
 
-                if simulator {
-                    print("Building playdate game...\n");
-                    run_command("pdc", output_path, tprint("%.pdx", output_name));
-                    print("Done building playdate game.\n");
-                    if !is_playdate_running() {
-                        print("Launching simulator...\n");
-                        run_playdate(tprint("%.pdx", output_name));
-                    }
-                } else {
                     print("Converting to arm32.\n");
 
+                    clang_command: [..] string;
+                    array_add(*clang_command,
+                        "clang", "-target", "thumbv7em-none-eabihf",
+                        "-mthumb", "-mcpu=cortex-m7", "-mfloat-abi=hard", "-mfpu=fpv5-sp-d16",
+                        "-mlong-calls", "-fpic", "-fPIC", /*"-fno-pic",*/ "-mno-movt", // hack to get it generating absolute addresses as gcc -mword-relocations... at least that's the idea
+                        "-D__FPU_USED=1", "-O2", "-falign-functions=16", "-fomit-frame-pointer", "-g3", "-gdwarf-2",
+                        "-Wall", "-Wno-unused", "-Wstrict-prototypes", "-Wno-unknown-pragmas", "-Wdouble-promotion",
+                        "-fverbose-asm", "-fno-common", "-ffunction-sections", "-fdata-sections",
+                        "-ffunction-sections", "-fdata-sections", "-fno-common",
+                        "-fno-exceptions", "-fno-unwind-tables",
+                        "-DTARGET_PLAYDATE=1", "-DTARGET_EXTENSION=1", "-D__HEAP_SIZE=8388208", "-D__STACK_SIZE=61800");
+
+                    compile_buildsupport_with_gcc :: true;
+                    if compile_buildsupport_with_gcc {
+                        run_command(
+                            "arm-none-eabi-gcc",
+                            "-g3", "-c", "-mthumb", "-mcpu=cortex-m7", "-mfloat-abi=hard", "-mfpu=fpv5-sp-d16",
+                            "-D__FPU_USED=1", "-O2",
+                            "-falign-functions=16", "-fomit-frame-pointer", "-gdwarf-2",
+                            "-Wall", "-Wno-unused", "-Wstrict-prototypes", "-Wno-unknown-pragmas",
+                            "-fverbose-asm", "-Wdouble-promotion", "-mword-relocations", "-fno-common", "-ffunction-sections", "-fdata-sections",
+                            "-DTARGET_PLAYDATE=1", "-DTARGET_EXTENSION=1", "-fno-exceptions",
+                            tprint("%/C_API/buildsupport/setup.c", sdk_path),
+                            // "-I", "C:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/arm-none-eabi/include",
+                            "-I", tprint("%/C_API", sdk_path),
+                            "-o", tprint("%.build/setup.o", #filepath));
+                    } else {
+                        run_command(..combine_commands(
+                            clang_command,
+                            "-c",
+                            tprint("%/C_API/buildsupport/setup.c", sdk_path),
+                            "-I", "C:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/arm-none-eabi/include",
+                            "-I", tprint("%/C_API", sdk_path),
+                            "-o", tprint("%.build/setup.o", #filepath)));
+                    }
+
                     output_files: [..] string;
+                    array_add(*output_files, tprint("%.build/setup.o", #filepath));
+
                     for file: file_list(tprint("%.build", #filepath)) {
                         if !ends_with(file, "no_opt.bc") {
                             continue;
@@ -153,72 +177,71 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
 
                         file_name := file;
                         file_name.count -= 3;
-                        // -O2 optimization would go here
-                        run_command(
-                            "clang", "-target", "armv7em-none-eabihf",
-                            "-mthumb", "-mcpu=cortex-m7", "-mfloat-abi=hard", "-mfpu=fpv5-sp-d16", "-D__FPU_USED=1",
-                            "-falign-functions=16", "-fomit-frame-pointer", "-ffunction-sections", "-fdata-sections", "-fno-common",
-                            "-fno-exceptions", "-fno-unwind-tables", // "-fpic", // fpic kind of conflicts with mword-relocations which is what it actually wants
-                            "-mlong-calls", "-fno-pic", "-mno-movt",
-                            // "-Wl,--emit-relocs",
-                            "-gdwarf-2",
-                            "-D__HEAP_SIZE=8388208", "-D__STACK_SIZE=61800",
-                            "-c", file, "-o", tprint("%.o", file_name));
+                        run_command(..combine_commands(
+                            clang_command,
+                            "-c", file, "-o", tprint("%.o", file_name)));
 
                         array_add(*output_files, tprint("%.o", file_name));
                     }
 
+                    print("Object files: %\n", output_files);
+
                     print("Compiled to object files.\n");
 
                     command_parts: [..] string;
-                    array_add(*command_parts,
-                        // "arm-none-eabi-gcc", "-nostdlib", "-nodefaultlibs", "-mcpu=cortex-m7", "-mthumb", "-mfloat-abi=hard", "-mfpu=fpv5-sp-d16", "-D__FPU_USED=1", "-O2"
-                        "arm-none-eabi-gcc", "-nostartfiles",
-                        "-mthumb", "-mcpu=cortex-m7", "-mfloat-abi=hard", "-mfpu=fpv5-sp-d16", "-D__FPU_USED=1",
-                        "-Wl,--cref,--gc-sections,--no-warn-mismatch,--emit-relocs", "-fno-exceptions",
-                        "-mword-relocations",
-                        tprint("-T%/C_API/buildsupport/link_map.ld", sdk_path),
-                        "-Wl,-Map=game.map,--cref,--gc-sections,--no-warn-mismatch,--emit-relocs",
-                        "-Wdouble-promotion",
-                        "--entry", "eventHandlerShim");
-                        // "-falign-functions=16", "-fomit-frame-pointer", "-gdwarf-2", "-fverbose-asm", "-ffunction-sections", "-fdata-sections", "-mword-relocations", "-fno-common",
-                        // "-nostartfiles");
+                    array_add(*command_parts, "arm-none-eabi-gcc");
                     array_add(*command_parts, ..output_files);
-                    array_add(*command_parts,
-                        // "-Wl,--no-dynamic-linker", "-Wl,-e,eventHandlerShim", "-Wl,--gc-sections", "-Wl,--build-id=none", "-T", tprint("%/C_API/buildsupport/link_map.ld", sdk_path), "-o", tprint("%/pdex.elf", output_path));
-                        "-o", tprint("%/pdex.elf", output_path));
+                    array_add(*command_parts, "-nostartfiles",
+                        "-mthumb", "-mcpu=cortex-m7", "-mfloat-abi=hard", "-mfpu=fpv5-sp-d16",
+                        "-D__FPU_USED=1",
+                        "-Wl,--cref,--gc-sections,--no-warn-mismatch,--emit-relocs",
+                        "-fno-exceptions", "-fno-unwind-tables",
+                        "-Wdouble-promotion",
+                        // "-mword-relocations",
+                        tprint("-T%/C_API/buildsupport/link_map.ld", sdk_path));
+                    array_add(*command_parts, "-o", tprint("%/pdex.elf", output_path));
+                    array_add(*command_parts, "--entry", "eventHandlerShim");
 
                     run_command(..command_parts);
 
-                    run_command("pdc", output_path, tprint("%.pdx", output_name));
+                    delete_directory(tprint("%.pdx", output_name));
+                    run_command("pdc", "--strip", output_path, tprint("%.pdx", output_name));
 
+                    print("Done building pdx file.\n");
+                    // print("Installing pdx game...\n");
 
-                    // command_parts: [..] string;
-                    // array_add(*command_parts,
-                    //     "clang", "-target", "armv7em-unknown-none-eabihf",
-                    //     "-mcpu=cortex-m7", "-mthumb", "-mfloat-abi=hard", "-mfpu=fpv5-sp-d16");
-                    // array_add(*command_parts, ..output_files);
-                    // array_add(*command_parts,
-                    //     "-o", tprint("%.elf", output_name), "-nostartfiles",
-                    //     "-T", tprint("%/C_API/buildsupport/link_map.ld", sdk_path),
-                    //     "--entry", "eventHandlerShim",
-                    //     "-mthumb", "-mcpu=cortex-m7", "-mfloat-abi=hard", "-mfpu=fpv5-sp-d16", "-D__FPU_USED=1",
-                    //     "-Wl,-Map=game.map,--cref,--gc-sections,--no-warn-mismatch,--emit-relocs,--strip-all,-R,.comment,-g");
+                    // run_command("pdutil", "install", tprint("%.pdx", output_name));
 
-                    // run_command(..command_parts);
+                    // // sleep_milliseconds(5000);
+                    // sleep_milliseconds(500);
 
-                    // copy_file(tprint("%.elf", output_name), tprint("%/pdex.elf", output_path));
-                    // run_command("pdc", "-sdkpath", sdk_path, output_path, tprint("%.pdx", output_name));
-                    // print("Done building playdate file.\n");
+                    // print("Done installing pdx game.\n");
 
+                    // run_command("pdutil", "run", tprint("/Games/%.pdx", output_name));
 
+                    // print("Done building pdx file.\n");
+
+                    break;
 
                     // if should_launch_mirror && !is_mirror_running() {
                     //     print("Launching mirror...\n");
                     //     run_mirror();
                     // }
+                }
 
-                    // push somehow
+            case .COMPLETE;
+                // create pdx
+
+                if simulator {
+                    print("Creating pdx build...\n");
+                    print("Building playdate game...\n");
+                    delete_directory(tprint("%.pdx", output_name));
+                    run_command("pdc", output_path, tprint("%.pdx", output_name));
+                    print("Done building playdate game.\n");
+                    if !is_playdate_running() {
+                        print("Launching simulator...\n");
+                        run_playdate(tprint("%.pdx", output_name));
+                    }
                 }
 
                 break;
@@ -279,6 +302,17 @@ is_optimized :: () -> bool {
 }
 
 #scope_file
+
+combine_commands :: (a: [] string, b: ..string) -> [] string {
+    combined := NewArray(a.count + b.count, string);
+    for i: 0..a.count - 1 {
+        combined[i] = a[i];
+    }
+    for i: 0..b.count - 1 {
+        combined[i + a.count] = b[i];
+    }
+    return combined;
+}
 
 is_process_running :: (name: string) -> bool {
     #assert OS == .WINDOWS "Cannot get if playdate is running outside of windows.\n";

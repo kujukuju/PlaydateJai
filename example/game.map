@@ -38,15 +38,15 @@ c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-
 Discarded input sections
 
  .text          0x00000000        0x0 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
- .text.__array_bounds_check_fail_5000000da
+ .text.__array_bounds_check_fail_b00000074
                 0x00000000       0x26 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
- .ARM.extab.text.__array_bounds_check_fail_5000000da
+ .ARM.extab.text.__array_bounds_check_fail_b00000074
                 0x00000000        0xc C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
- .ARM.exidx.text.__array_bounds_check_fail_5000000da
+ .ARM.exidx.text.__array_bounds_check_fail_b00000074
                 0x00000000        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
- .text.my_panic_5000000de
+ .text.my_panic_b00000078
                 0x00000000        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
- .ARM.exidx.text.my_panic_5000000de
+ .ARM.exidx.text.my_panic_b00000078
                 0x00000000        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
  .bss._no_reset_base
                 0x00000000        0x0 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
@@ -130,31 +130,31 @@ Discarded input sections
                 0x00000000        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
  .llvm_addrsig  0x00000000        0xf C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
  .text          0x00000000        0x0 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
- .text.__arithmetic_overflow_5000000dd
+ .text.__arithmetic_overflow_b00000077
                 0x00000000       0x30 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
- .ARM.extab.text.__arithmetic_overflow_5000000dd
+ .ARM.extab.text.__arithmetic_overflow_b00000077
                 0x00000000        0xc C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
- .ARM.exidx.text.__arithmetic_overflow_5000000dd
+ .ARM.exidx.text.__arithmetic_overflow_b00000077
                 0x00000000        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
- .text.__element_duplicate_5000000d9
+ .text.__element_duplicate_b00000073
                 0x00000000       0x90 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
- .ARM.exidx.text.__element_duplicate_5000000d9
+ .ARM.exidx.text.__element_duplicate_b00000073
                 0x00000000        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
- .text.get_current_workspace_f00000096
+ .text.get_current_workspace_110000008d
                 0x00000000       0x1c C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
- .ARM.exidx.text.get_current_workspace_f00000096
+ .ARM.exidx.text.get_current_workspace_110000008d
                 0x00000000        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
  .llvm_addrsig  0x00000000        0x5 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
  .text          0x00000000        0x0 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
- .text.__null_pointer_check_fail_5000000dc
+ .text.__null_pointer_check_fail_b00000076
                 0x00000000       0x14 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
- .ARM.exidx.text.__null_pointer_check_fail_5000000dc
+ .ARM.exidx.text.__null_pointer_check_fail_b00000076
                 0x00000000        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
  .llvm_addrsig  0x00000000        0x5 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
  .text          0x00000000        0x0 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
- .text.__panic_due_to_runtime_call_of_compile_time_procedure_5000000df
+ .text.__panic_due_to_runtime_call_of_compile_time_procedure_b00000079
                 0x00000000        0xe C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
- .ARM.exidx.text.__panic_due_to_runtime_call_of_compile_time_procedure_5000000df
+ .ARM.exidx.text.__panic_due_to_runtime_call_of_compile_time_procedure_b00000079
                 0x00000000        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
  .llvm_addrsig  0x00000000        0x7 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
  .data          0x00000000        0x0 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
@@ -391,60 +391,60 @@ END GROUP
  .text.__procedure_1b00000001
                 0x000010a4       0x6c C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
                 0x000010a4                __procedure_1b00000001
- .text._free_r_900000381
+ .text._free_r_500000333
                 0x00001110       0xd0 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
-                0x00001110                _free_r_900000381
- .text.eventHandler_7000000bc
+                0x00001110                _free_r_500000333
+ .text.eventHandler_3000000d0
                 0x000011e0      0x144 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
-                0x000011e0                eventHandler_7000000bc
- .text._getpid_90000037c
+                0x000011e0                eventHandler_3000000d0
+ .text._getpid_50000032e
                 0x00001324        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
-                0x00001324                _getpid_90000037c
+                0x00001324                _getpid_50000032e
                 0x00001324                _getpid
- .text._kill_90000037b
+ .text._kill_50000032d
                 0x0000132c        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
                 0x0000132c                _kill
-                0x0000132c                _kill_90000037b
- .text._realloc_r_900000380
+                0x0000132c                _kill_50000032d
+ .text._realloc_r_500000332
                 0x00001334       0xe0 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
-                0x00001334                _realloc_r_900000380
- .text.allocate_proc_900000379
+                0x00001334                _realloc_r_500000332
+ .text.allocate_proc_50000032b
                 0x00001414      0x338 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
-                0x00001414                allocate_proc_900000379
- .text.set_initial_data_5000000e0
+                0x00001414                allocate_proc_50000032b
+ .text.set_initial_data_b0000007a
                 0x0000174c       0xc8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
-                0x0000174c                set_initial_data_5000000e0
- .text.__exidx_end_90000037e
+                0x0000174c                set_initial_data_b0000007a
+ .text.__exidx_end_500000330
                 0x00001814        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
                 0x00001814                __exidx_end
-                0x00001814                __exidx_end_90000037e
- .text._exit_90000037a
+                0x00001814                __exidx_end_500000330
+ .text._exit_50000032c
                 0x0000181c        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
                 0x0000181c                _exit
-                0x0000181c                _exit_90000037a
- .text._malloc_r_90000037f
+                0x0000181c                _exit_50000032c
+ .text._malloc_r_500000331
                 0x00001824       0xd8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
-                0x00001824                _malloc_r_90000037f
+                0x00001824                _malloc_r_500000331
  .text.__procedure_1b00000003
                 0x000018fc       0x84 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
                 0x000018fc                __procedure_1b00000003
- .text.__cast_bounds_check_fail_5000000db
+ .text.__cast_bounds_check_fail_b00000075
                 0x00001980       0x40 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
-                0x00001980                __cast_bounds_check_fail_5000000db
- .text.__exidx_start_90000037d
+                0x00001980                __cast_bounds_check_fail_b00000075
+ .text.__exidx_start_50000032f
                 0x000019c0        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
-                0x000019c0                __exidx_start_90000037d
+                0x000019c0                __exidx_start_50000032f
                 0x000019c0                __exidx_start
  .text.__procedure_1b00000002
                 0x000019c8       0x5c C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
                 0x000019c8                __procedure_1b00000002
- .text.update_7000000bb
+ .text.update_3000000cf
                 0x00001a24      0x108 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
-                0x00001a24                update_7000000bb
- .text.eventHandlerShim_900000378
+                0x00001a24                update_3000000cf
+ .text.eventHandlerShim_50000032a
                 0x00001b2c      0x18c C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
+                0x00001b2c                eventHandlerShim_50000032a
                 0x00001b2c                eventHandlerShim
-                0x00001b2c                eventHandlerShim_900000378
  .text.abort    0x00001cb8       0x10 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-abort.o)
                 0x00001cb8                abort
  .text.__aeabi_memclr
@@ -497,86 +497,86 @@ END GROUP
  .ARM.exidx.text.__procedure_1b00000001
                 0x0000531c        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 
-.ARM.extab.text._free_r_900000381
+.ARM.extab.text._free_r_500000333
                 0x00005324        0xc
- .ARM.extab.text._free_r_900000381
+ .ARM.extab.text._free_r_500000333
                 0x00005324        0xc C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 
-.ARM.exidx.text._free_r_900000381
+.ARM.exidx.text._free_r_500000333
                 0x00005330        0x8
- .ARM.exidx.text._free_r_900000381
+ .ARM.exidx.text._free_r_500000333
                 0x00005330        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 
-.ARM.extab.text.eventHandler_7000000bc
+.ARM.extab.text.eventHandler_3000000d0
                 0x00005338        0xc
- .ARM.extab.text.eventHandler_7000000bc
+ .ARM.extab.text.eventHandler_3000000d0
                 0x00005338        0xc C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 
-.ARM.exidx.text.eventHandler_7000000bc
+.ARM.exidx.text.eventHandler_3000000d0
                 0x00005344        0x8
- .ARM.exidx.text.eventHandler_7000000bc
+ .ARM.exidx.text.eventHandler_3000000d0
                 0x00005344        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 
-.ARM.exidx.text._getpid_90000037c
+.ARM.exidx.text._getpid_50000032e
                 0x0000534c        0x8
- .ARM.exidx.text._getpid_90000037c
+ .ARM.exidx.text._getpid_50000032e
                 0x0000534c        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 
-.ARM.exidx.text._kill_90000037b
+.ARM.exidx.text._kill_50000032d
                 0x00005354        0x0
- .ARM.exidx.text._kill_90000037b
+ .ARM.exidx.text._kill_50000032d
                 0x00005354        0x0 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
                                   0x8 (size before relaxing)
 
-.ARM.extab.text._realloc_r_900000380
+.ARM.extab.text._realloc_r_500000332
                 0x00005354        0xc
- .ARM.extab.text._realloc_r_900000380
+ .ARM.extab.text._realloc_r_500000332
                 0x00005354        0xc C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
 
-.ARM.exidx.text._realloc_r_900000380
+.ARM.exidx.text._realloc_r_500000332
                 0x00005360        0x8
- .ARM.exidx.text._realloc_r_900000380
+ .ARM.exidx.text._realloc_r_500000332
                 0x00005360        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
 
-.ARM.extab.text.allocate_proc_900000379
+.ARM.extab.text.allocate_proc_50000032b
                 0x00005368        0xc
- .ARM.extab.text.allocate_proc_900000379
+ .ARM.extab.text.allocate_proc_50000032b
                 0x00005368        0xc C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
 
-.ARM.exidx.text.allocate_proc_900000379
+.ARM.exidx.text.allocate_proc_50000032b
                 0x00005374        0x8
- .ARM.exidx.text.allocate_proc_900000379
+ .ARM.exidx.text.allocate_proc_50000032b
                 0x00005374        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
 
-.ARM.extab.text.set_initial_data_5000000e0
+.ARM.extab.text.set_initial_data_b0000007a
                 0x0000537c        0xc
- .ARM.extab.text.set_initial_data_5000000e0
+ .ARM.extab.text.set_initial_data_b0000007a
                 0x0000537c        0xc C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
 
-.ARM.exidx.text.set_initial_data_5000000e0
+.ARM.exidx.text.set_initial_data_b0000007a
                 0x00005388        0x8
- .ARM.exidx.text.set_initial_data_5000000e0
+ .ARM.exidx.text.set_initial_data_b0000007a
                 0x00005388        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
 
-.ARM.exidx.text.__exidx_end_90000037e
+.ARM.exidx.text.__exidx_end_500000330
                 0x00005390        0x8
- .ARM.exidx.text.__exidx_end_90000037e
+ .ARM.exidx.text.__exidx_end_500000330
                 0x00005390        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
 
-.ARM.exidx.text._exit_90000037a
+.ARM.exidx.text._exit_50000032c
                 0x00005398        0x0
- .ARM.exidx.text._exit_90000037a
+ .ARM.exidx.text._exit_50000032c
                 0x00005398        0x0 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
                                   0x8 (size before relaxing)
 
-.ARM.extab.text._malloc_r_90000037f
+.ARM.extab.text._malloc_r_500000331
                 0x00005398        0xc
- .ARM.extab.text._malloc_r_90000037f
+ .ARM.extab.text._malloc_r_500000331
                 0x00005398        0xc C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
 
-.ARM.exidx.text._malloc_r_90000037f
+.ARM.exidx.text._malloc_r_500000331
                 0x000053a4        0x8
- .ARM.exidx.text._malloc_r_90000037f
+ .ARM.exidx.text._malloc_r_500000331
                 0x000053a4        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
 
 .ARM.exidx.text.__procedure_1b00000003
@@ -584,19 +584,19 @@ END GROUP
  .ARM.exidx.text.__procedure_1b00000003
                 0x000053ac        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
 
-.ARM.extab.text.__cast_bounds_check_fail_5000000db
+.ARM.extab.text.__cast_bounds_check_fail_b00000075
                 0x000053b4        0xc
- .ARM.extab.text.__cast_bounds_check_fail_5000000db
+ .ARM.extab.text.__cast_bounds_check_fail_b00000075
                 0x000053b4        0xc C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
 
-.ARM.exidx.text.__cast_bounds_check_fail_5000000db
+.ARM.exidx.text.__cast_bounds_check_fail_b00000075
                 0x000053c0        0x8
- .ARM.exidx.text.__cast_bounds_check_fail_5000000db
+ .ARM.exidx.text.__cast_bounds_check_fail_b00000075
                 0x000053c0        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
 
-.ARM.exidx.text.__exidx_start_90000037d
+.ARM.exidx.text.__exidx_start_50000032f
                 0x000053c8        0x8
- .ARM.exidx.text.__exidx_start_90000037d
+ .ARM.exidx.text.__exidx_start_50000032f
                 0x000053c8        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
 
 .ARM.exidx.text.__procedure_1b00000002
@@ -604,19 +604,19 @@ END GROUP
  .ARM.exidx.text.__procedure_1b00000002
                 0x000053d0        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
 
-.ARM.extab.text.update_7000000bb
+.ARM.extab.text.update_3000000cf
                 0x000053d8        0xc
- .ARM.extab.text.update_7000000bb
+ .ARM.extab.text.update_3000000cf
                 0x000053d8        0xc C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
 
-.ARM.exidx.text.update_7000000bb
+.ARM.exidx.text.update_3000000cf
                 0x000053e4        0x8
- .ARM.exidx.text.update_7000000bb
+ .ARM.exidx.text.update_3000000cf
                 0x000053e4        0x8 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
 
-.ARM.exidx.text.eventHandlerShim_900000378
+.ARM.exidx.text.eventHandlerShim_50000032a
                 0x000053ec       0x10
- .ARM.exidx.text.eventHandlerShim_900000378
+ .ARM.exidx.text.eventHandlerShim_50000032a
                 0x000053ec       0x10 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
                                   0x8 (size before relaxing)
 
@@ -711,14 +711,14 @@ LOAD linker stubs
  .debug_ranges  0x00000070       0x38 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
  .debug_ranges  0x000000a8       0x38 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
 
-.debug_str      0x00000000     0x3112
+.debug_str      0x00000000     0x3113
  .debug_str     0x00000000     0x2cd3 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
                                0x31c9 (size before relaxing)
- .debug_str     0x00002cd3      0x185 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
-                                0x7f7 (size before relaxing)
- .debug_str     0x00002e58      0x115 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
+ .debug_str     0x00002cd3      0x186 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
+                                0x7f8 (size before relaxing)
+ .debug_str     0x00002e59      0x115 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
                                 0x77e (size before relaxing)
- .debug_str     0x00002f6d      0x1a5 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
+ .debug_str     0x00002f6e      0x1a5 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
                                0x3259 (size before relaxing)
 
 .debug_pubnames
@@ -859,20 +859,20 @@ __aeabi_unwind_cpp_pr1                            c:/program files (x86)/gnu arm
                                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
                                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 __aeabi_unwind_cpp_pr2                            c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
-__arithmetic_overflow_5000000dd                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
-__array_bounds_check_fail_5000000da               C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
-__cast_bounds_check_fail_5000000db                C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
+__arithmetic_overflow_b00000077                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
+__array_bounds_check_fail_b00000074               C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
+__cast_bounds_check_fail_b00000075                C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
                                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
 __cxa_begin_cleanup                               c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
 __cxa_call_unexpected                             c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
 __cxa_type_match                                  c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
-__element_duplicate_5000000d9                     C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
+__element_duplicate_b00000073                     C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
 __exidx_end                                       C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
-__exidx_end_90000037e                             C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
+__exidx_end_500000330                             C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
 __exidx_start                                     C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
-__exidx_start_90000037d                           C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
+__exidx_start_50000032f                           C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
 __gnu_Unwind_Backtrace                            c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(libunwind.o)
 __gnu_Unwind_Find_exidx                           c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
@@ -939,8 +939,8 @@ __malloc_trim_threshold                           c:/program files (x86)/gnu arm
 __malloc_unlock                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-mlock.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-freer.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-mallocr.o)
-__null_pointer_check_fail_5000000dc               C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
-__panic_due_to_runtime_call_of_compile_time_procedure_5000000df C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
+__null_pointer_check_fail_b00000076               C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
+__panic_due_to_runtime_call_of_compile_time_procedure_b00000079 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
 __procedure_1b00000001                            C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 __procedure_1b00000002                            C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
                                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
@@ -968,14 +968,14 @@ _bss_base                                         C:/Users/Kuju/Projects/Playdat
                                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
 _exit                                             C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-abort.o)
-_exit_90000037a                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
+_exit_50000032c                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
 _free_r                                           c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-freer.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-reent.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-mallocr.o)
-_free_r_900000381                                 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
+_free_r_500000333                                 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 _getpid                                           C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-signalr.o)
-_getpid_90000037c                                 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
+_getpid_50000032e                                 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 _getpid_r                                         c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-signalr.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-signal.o)
 _global_data_base                                 C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
@@ -988,18 +988,18 @@ _init_signal                                      c:/program files (x86)/gnu arm
 _init_signal_r                                    c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-signal.o)
 _kill                                             C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-signalr.o)
-_kill_90000037b                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
+_kill_50000032d                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
 _kill_r                                           c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-signalr.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-signal.o)
 _literals                                         C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 _malloc_r                                         c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-mallocr.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-signal.o)
-_malloc_r_90000037f                               C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
+_malloc_r_500000331                               C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
                                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 _malloc_trim_r                                    c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-freer.o)
 _no_reset_base                                    C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 _raise_r                                          c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-signal.o)
-_realloc_r_900000380                              C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
+_realloc_r_500000332                              C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
                                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 _reclaim_reent                                    c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-reent.o)
 _sbrk                                             c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-sbrkr.o)
@@ -1012,27 +1012,27 @@ _type_table_section                               C:/Users/Kuju/Projects/Playdat
 abort                                             c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-abort.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(pr-support.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
-allocate_proc_900000379                           C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
+allocate_proc_50000032b                           C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
                                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 cleanup_glue                                      c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-reent.o)
 errno                                             c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-reent.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-sbrkr.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-signalr.o)
 eventHandlerShim                                  C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
-eventHandlerShim_900000378                        C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
-eventHandler_7000000bc                            C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
+eventHandlerShim_50000032a                        C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
+eventHandler_3000000d0                            C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
                                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
-get_current_workspace_f00000096                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
+get_current_workspace_110000008d                  C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_1_w3_no_opt.o
 memcpy                                            c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-memcpy.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-aeabi_memcpy.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
-my_panic_5000000de                                C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
+my_panic_b00000078                                C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
 raise                                             c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-signal.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-abort.o)
 restore_core_regs                                 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(libunwind.o)
                                                   c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a(unwind-arm.o)
-set_initial_data_5000000e0                        C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
+set_initial_data_b0000007a                        C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_2_w3_no_opt.o
                                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
 signal                                            c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a(lib_a-signal.o)
-update_7000000bb                                  C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
+update_3000000cf                                  C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_3_w3_no_opt.o
                                                   C:/Users/Kuju/Projects/PlaydateJai/example/.build/pdex_0_w3_no_opt.o
