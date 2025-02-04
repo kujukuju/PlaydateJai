@@ -1,0 +1,5 @@
+name=Game of Life
+author=Dave Hayden
+description=A game outline in pure C
+bundleID=com.panic.goltest
+imagePath=

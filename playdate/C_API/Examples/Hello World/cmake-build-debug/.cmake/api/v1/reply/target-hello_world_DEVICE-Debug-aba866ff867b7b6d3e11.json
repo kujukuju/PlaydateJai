@@ -1,0 +1,377 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "hello_world_DEVICE.elf"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_options",
+			"include",
+			"target_compile_options",
+			"add_compile_definitions",
+			"target_compile_definitions",
+			"include_directories",
+			"target_sources"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt",
+			"C:/Program Files/PlaydateSDK/C_API/buildsupport/playdate.cmake",
+			"C:/Program Files/PlaydateSDK/C_API/buildsupport/playdate_game.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 34,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 39,
+				"parent" : 0
+			},
+			{
+				"file" : 2,
+				"parent" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 6,
+				"parent" : 3
+			},
+			{
+				"file" : 1,
+				"parent" : 4
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 42,
+				"parent" : 5
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 43,
+				"parent" : 5
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 44,
+				"parent" : 5
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 45,
+				"parent" : 5
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 46,
+				"parent" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 29,
+				"parent" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 30,
+				"parent" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 33,
+				"parent" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 34,
+				"parent" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 35,
+				"parent" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 36,
+				"parent" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 37,
+				"parent" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 38,
+				"parent" : 5
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 14,
+				"parent" : 5
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 28,
+				"parent" : 5
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 9,
+				"parent" : 5
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 20,
+				"parent" : 5
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -fdiagnostics-color=always"
+				},
+				{
+					"backtrace" : 11,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 11,
+					"fragment" : "-Wno-unknown-pragmas"
+				},
+				{
+					"backtrace" : 11,
+					"fragment" : "-Wdouble-promotion"
+				},
+				{
+					"backtrace" : 12,
+					"fragment" : "-O2"
+				},
+				{
+					"backtrace" : 13,
+					"fragment" : "-mthumb"
+				},
+				{
+					"backtrace" : 13,
+					"fragment" : "-mcpu=cortex-m7"
+				},
+				{
+					"backtrace" : 13,
+					"fragment" : "-mfloat-abi=hard"
+				},
+				{
+					"backtrace" : 13,
+					"fragment" : "-mfpu=fpv5-sp-d16"
+				},
+				{
+					"backtrace" : 13,
+					"fragment" : "-D__FPU_USED=1"
+				},
+				{
+					"backtrace" : 14,
+					"fragment" : "-falign-functions=16"
+				},
+				{
+					"backtrace" : 14,
+					"fragment" : "-fomit-frame-pointer"
+				},
+				{
+					"backtrace" : 15,
+					"fragment" : "-gdwarf-2"
+				},
+				{
+					"backtrace" : 16,
+					"fragment" : "-fverbose-asm"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-ffunction-sections"
+				},
+				{
+					"backtrace" : 17,
+					"fragment" : "-fdata-sections"
+				},
+				{
+					"backtrace" : 18,
+					"fragment" : "-mword-relocations"
+				},
+				{
+					"backtrace" : 18,
+					"fragment" : "-fno-common"
+				},
+				{
+					"fragment" : "-std=gnu11"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 19,
+					"define" : "TARGET_EXTENSION=1"
+				},
+				{
+					"backtrace" : 20,
+					"define" : "TARGET_PLAYDATE=1"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 21,
+					"path" : "C:/Program Files/PlaydateSDK/C_API"
+				}
+			],
+			"language" : "C",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "11"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"id" : "hello_world_DEVICE::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "-nostartfiles",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 7,
+				"fragment" : "-mthumb",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 7,
+				"fragment" : "-mcpu=cortex-m7",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 7,
+				"fragment" : "-mfloat-abi=hard",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 7,
+				"fragment" : "-mfpu=fpv5-sp-d16",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 7,
+				"fragment" : "-D__FPU_USED=1",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "\"-TC:/Program Files/PlaydateSDK/C_API/buildsupport/link_map.ld\"",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 9,
+				"fragment" : "-Wl,-Map=game.map,--cref,--gc-sections,--no-warn-mismatch,--emit-relocs",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "--entry",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "eventHandlerShim",
+				"role" : "flags"
+			}
+		],
+		"language" : "C"
+	},
+	"name" : "hello_world_DEVICE",
+	"nameOnDisk" : "hello_world_DEVICE.elf",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/main.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 22,
+			"compileGroupIndex" : 0,
+			"path" : "C:/Program Files/PlaydateSDK/C_API/buildsupport/setup.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

@@ -1,0 +1,15 @@
+"C:\Program Files\JetBrains\CLion 2023.1.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2023.1.4/bin/ninja/win/x64/ninja.exe" -DTOOLCHAIN=armgcc "-DCMAKE_TOOLCHAIN_FILE=C:/Program Files/PlaydateSDK/C_API/buildsupport/arm.cmake" -G Ninja -S "C:\Program Files\PlaydateSDK\C_API\Examples\Hello World" -B "C:\Program Files\PlaydateSDK\C_API\Examples\Hello World\cmake-build-debug"
+-- arm.cmake loaded
+-- arm.cmake loaded
+-- The C compiler identification is GNU 10.3.1
+-- The ASM compiler identification is GNU
+-- Found assembler: C:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/bin/arm-none-eabi-gcc.exe
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/bin/arm-none-eabi-gcc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- SDK Path: C:/Program Files/PlaydateSDK
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Program Files/PlaydateSDK/C_API/Examples/Hello World/cmake-build-debug

@@ -1,1 +1,0 @@
-CMakeLists.txt not found in C:\Users\Kuju\Projects\PlaydateJai\playdate Select CMakeLists.txt

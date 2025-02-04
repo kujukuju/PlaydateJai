@@ -1,0 +1,12 @@
+{
+  "extension" : {
+    "identifier" : "com.panic.Playdate",
+    "name" : "Playdate"
+  },
+  "extensionTemplate" : "simulator",
+  "extensionValues" : {
+    "playdate.build-type" : "make",
+    "playdate.product-name" : "SpriteGame"
+  },
+  "identifier" : "44D94969-0E9B-48D1-8AC4-EAF486B2D505"
+}
