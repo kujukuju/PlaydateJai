@@ -1,0 +1,8 @@
+name=b360
+author=Panic Inc.
+description=When all you have is a ton of bricks, everything looks like a paddle.
+bundleID=com.panic.b360
+version=1.0
+buildNumber=123
+pdxversion=20601
+buildtime=791972477
