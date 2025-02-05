@@ -78,9 +78,13 @@ __exidx_start :: () #c_call {}
 #program_export
 __exidx_end :: () #c_call {}
 
-// #if OS == .WINDOWS {
-#load "module_windows.jai";
-// }
+#if OS == .WINDOWS {
+    #load "module_windows.jai";
+} else #if OS == .KRAMPOS || OS == .NN_SWITCH {
+    #load "module_playdate.jai";
+} else {
+    #assert false "Unsupported playdate OS.\n";
+}
 
 #scope_file
 

@@ -1,6 +1,0 @@
-# ninja log v5
-0	96	7603518874823602	CMakeFiles/hello_world.dir/src/main.c.obj	e03361bd9c35df4a
-97	270	7603518876070811	hello_world.dll	98679466f329e0f2
-97	270	7603518876070811	hello_world.lib	98679466f329e0f2
-0	25	0	CMakeFiles/clean.additional	d4fae4f6383640a3
-26	36	0	clean	91dd2c9914578844

@@ -1,3 +1,0 @@
-C:/Program Files/PlaydateSDK/C_API/Examples/Hello World/cmake-build-release/CMakeFiles/hello_world.dir
-C:/Program Files/PlaydateSDK/C_API/Examples/Hello World/cmake-build-release/CMakeFiles/edit_cache.dir
-C:/Program Files/PlaydateSDK/C_API/Examples/Hello World/cmake-build-release/CMakeFiles/rebuild_cache.dir

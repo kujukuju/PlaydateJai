@@ -33,6 +33,7 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
         // options.append_executable_filename_extension = false;
         options.output_path = output_path;
         options.output_executable_name = "pdex";
+        options.import_path = .["C:/jai/modules", tprint("%../../", #filepath), "/mnt/c/jai/modules"];
     } else {
         options.output_type = .STATIC_LIBRARY;
         options.cpu_target = .CUSTOM;
@@ -58,11 +59,11 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
         options.llvm_options.output_bitcode_before_optimizations = true;
         options.llvm_options.function_sections = true;
         options.llvm_options.enable_split_modules = false;
+        options.import_path = .[tprint("%../modules", #filepath), "C:/jai/modules", tprint("%../../", #filepath), "/mnt/c/jai/modules"];
     }
     // 1 mb
     // options.temporary_storage_size = 1048576;
     options.temporary_storage_size = 1024;
-    options.import_path = .[tprint("%../modules", #filepath), "C:/jai/modules", tprint("%../../", #filepath), "/mnt/c/jai/modules"];
 
 
     compiler_begin_intercept(workspace);
@@ -120,8 +121,112 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
                         new_statements: [..] *Code_Node;
                         body.block.statements = new_statements;
                         compiler_modify_procedure(workspace, body);
+
+                        continue;
                     }
                 }
+
+                // for typechecked.procedure_bodies {
+                //     body: *Code_Procedure_Body = it.expression;
+                //     if body.body_flags & .ALREADY_MODIFIED {
+                //         continue;
+                //     }
+
+                //     assert(!!body.header);
+                //     if body.header.name == "eventHandler" {
+                //         arg := body.header.arguments[0];
+
+                //         create_expression :: () -> *Code_Type_Definition {
+                //             u32_type := New(Type_Info_Integer);
+                //             u32_type.type = .INTEGER;
+                //             u32_type.runtime_size = 4;
+                //             u32_type.signed = false;
+
+                //             node := New(Code_Type_Definition);
+                //             node.type = New(Type_Info);
+                //             node.type.type = .TYPE;
+                //             node.type.runtime_size = 4;
+                //             node.info = u32_type;
+                //             return node;
+                //         }
+
+                //         create_resolved_declaration :: () -> *Code_Declaration {
+                //             node := New(Code_Declaration);
+                //             node.type = New(Type_Info);
+                //             node.type.type = .TYPE;
+                //             node.type.runtime_size = 4;
+                //             node.name = "u32";
+                //             node.flags = .IS_CONSTANT | .IS_GLOBAL;
+                //             node.expression = create_expression();
+                //             return node;
+                //         }
+
+                //         create_type_valued_expression :: () -> *Code_Ident {
+                //             node := New(Code_Ident);
+                //             node.name = "u32";
+                //             node.type = New(Type_Info);
+                //             node.type.type = .TYPE;
+                //             node.type.runtime_size = 4;
+                //             node.resolved_declaration = create_resolved_declaration();
+                //             return node;
+                //         }
+
+                //         create_type_inst :: () -> *Code_Type_Instantiation {
+                //             u32_type := New(Type_Info_Integer);
+                //             u32_type.type = .INTEGER;
+                //             u32_type.runtime_size = 4;
+                //             u32_type.signed = false;
+
+                //             node := New(Code_Type_Instantiation);
+                //             node.type = New(Type_Info);
+                //             node.type.type = .TYPE;
+                //             node.type.runtime_size = 4;
+                //             node.result = u32_type;
+                //             node.type_valued_expression = create_type_valued_expression();
+
+                //             return node;
+                //         }
+
+                //         create_pointer_u32 :: (current: *Code_Declaration) -> *Code_Declaration {
+                //             u32_type := New(Type_Info_Integer);
+                //             u32_type.type = .INTEGER;
+                //             u32_type.runtime_size = 4;
+                //             u32_type.signed = false;
+
+                //             node := New(Code_Declaration);
+                //             node.location = current.location;
+                //             node.node_flags = current.node_flags;
+                //             node.type = u32_type;
+                //             node.name = current.name;
+                //             node.type_inst = create_type_inst();
+                //             node.program_export_name = current.program_export_name;
+
+                //             return node;
+                //         }
+
+                //         body.header.arguments[0] = create_pointer_u32(body.header.arguments[0]);
+
+                //         for it.subexpressions {
+                //             if it.kind == .IDENT {
+                //                 print("%\n", (cast(*Code_Ident) it).*);
+                //             }
+                //             print("%\n", it.*);
+                //         }
+
+                //         compiler_modify_procedure(workspace, body);
+                //     }
+
+                //     // print("%\n", it.expression.*);
+                //     // print("%\n", it.subexpressions.*);
+                // }
+
+                // look for any pointers and make them u32s that runtime cast back into their respective types...
+                // for typechecked.all {
+                //     fix_pointers(it.expression);
+                //     for it.subexpressions {
+                //         fix_pointers(it);
+                //     }
+                // }
 
             case .PHASE;
                 phase := cast(*Message_Phase) message;
@@ -204,10 +309,12 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
 
                     run_command(..command_parts);
 
-                    delete_directory(tprint("%.pdx", output_name));
+                    // delete_directory(tprint("%.pdx", output_name));
                     run_command("pdc", "--strip", output_path, tprint("%.pdx", output_name));
 
                     print("Done building pdx file.\n");
+
+                    compiler_custom_link_command_is_complete(workspace);
 
 
                     // print("Installing pdx game...\n");
@@ -237,7 +344,7 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
                 if simulator {
                     print("Creating pdx build...\n");
                     print("Building playdate game...\n");
-                    delete_directory(tprint("%.pdx", output_name));
+                    // delete_directory(tprint("%.pdx", output_name));
                     run_command("pdc", output_path, tprint("%.pdx", output_name));
                     print("Done building playdate game.\n");
                     if !is_playdate_running() {
@@ -304,6 +411,159 @@ is_optimized :: () -> bool {
 }
 
 #scope_file
+
+fix_pointers :: (node: *Code_Node) {
+    if !node {
+        return;
+    }
+    // print("Found node type: %\n", node.kind);
+
+    fix_pointers(node.type);
+
+    if node.kind == {
+        case .STRUCT;
+            node_struct := cast(*Code_Struct) node;
+            block := node_struct.block;
+
+            fix_pointers(node_struct.defined_type);
+
+            // new_members := NewArray(block.members.count * 2, *Code_Scope_Entry);
+            // new_statements := NewArray(block.statements.count * 2, *Code_Node);
+
+            // print("struct block type is %\n", block.kind);
+            // print("CHECKING STRUCT %\n", node_struct.defined_type.name);
+            // defer print("DONE CHECKING STRUCT\n");
+            // for block.members print("struct % block member % %\n", node_struct.defined_type.name, it.kind, it.name);
+            // for block.statements print("struct % block statement %\n", node_struct.defined_type.name, it.kind);
+            // for block.statements {
+            //     assert(it.kind == .DECLARATION, "Fonud struct member of type %.\n", it.kind);
+            //     print("alignemnt_expression %\n", (cast(*Code_Declaration) it).alignment_expression.kind);
+            // }
+            // for block.members fix_pointers(it);
+            for block.statements fix_pointers(it);
+            fix_pointers(node_struct.defined_type);
+            node_struct.alignment = min(node_struct.alignment, 4);
+
+        case .IDENT;
+            node_ident := cast(*Code_Ident) node;
+            fix_pointers(node_ident.resolved_declaration);
+
+        case .DECLARATION;
+            node_declaration := cast(*Code_Declaration) node;
+            // if !node_declaration.alignment_expression {
+            //     alignment_literal := New(Code_Literal);
+            //     alignment_literal.value_type = .NUMBER;
+            //     alignment_literal._u64 = 4;
+            //     alignment_literal.value_flags = .IS_A_NUMBER;
+            //     // node_declaration.alignment_expression = alignment_literal;
+            //     // print(" alignmnt_expression %\n", node_declaration.alignment_expression.kind);
+            // }
+            // fix_pointers(node.type_inst);
+            // print(" checking decl type_inst %\n", node_declaration.type_inst.kind);
+            // print(" checking declaration %\n", node_declaration.expression.kind);
+            fix_pointers(node_declaration.type_inst);
+            fix_pointers(node_declaration.expression);
+
+        case .BLOCK;
+            node_block := cast(*Code_Block) node;
+            for node_block.members fix_pointers(it);
+            for node_block.statements fix_pointers(it);
+
+        case .PROCEDURE_BODY;
+            node_procedure_body := cast(*Code_Procedure_Body) node;
+            fix_pointers(node_procedure_body.block);
+            // fix_pointers(node_procedure_body.header);
+
+        case .PROCEDURE_HEADER;
+            node_procedure_header := cast(*Code_Procedure_Header) node;
+            fix_pointers(node_procedure_header.constants_block);
+            for node_procedure_header.arguments fix_pointers(it);
+            for node_procedure_header.returns fix_pointers(it);
+            for node_procedure_header.parameter_usings fix_pointers(it);
+            // ignoring polymorph_source_header I guess?
+            fix_pointers(node_procedure_header.body_or_null);
+
+        case .IF;
+            node_if := cast(*Code_If) node;
+            if node_if.is_static return;
+            fix_pointers(node_if.condition);
+            fix_pointers(node_if.then_block);
+            fix_pointers(node_if.else_block);
+
+        case .RETURN;
+            node_return := cast(*Code_Return) node;
+            // skipping arguments_unsorted?
+            for node_return.arguments_sorted fix_pointers(it);
+
+        case .CAST;
+            node_cast := cast(*Code_Cast) node;
+            fix_pointers(node_cast.target_type);
+            fix_pointers(node_cast.expression);
+
+        case .TYPE_INSTANTIATION;
+            node_type_instantiation := cast(*Code_Type_Instantiation) node;
+            // print("  type_inst result: %\n", node_type_instantiation.result.*);
+            fix_pointers(node_type_instantiation.result);
+            fix_pointers(node_type_instantiation.must_implement);
+            fix_pointers(node_type_instantiation.pointer_to);
+            fix_pointers(node_type_instantiation.type_directive_target);
+            fix_pointers(node_type_instantiation.array_element_type);
+            fix_pointers(node_type_instantiation.array_dimension);
+
+        case;
+            // print("Unsupported node kind. %\n", node.kind);
+    }
+}
+
+fix_pointers :: (type: *Type_Info) -> int {
+    if !type {
+        return 0;
+    }
+
+    if type.type == {
+        case .POINTER;
+            type.runtime_size = 4;
+            // I could literally construct a new type here but I don't think I can even change it at this point
+            type_pointer := cast(*Type_Info_Pointer) type;
+            // type.type = .INTEGER;
+            // fix_pointers(type_pointer.pointer_to);
+
+        case .PROCEDURE;
+            type.runtime_size = 4;
+            type_procedure := cast(*Type_Info_Procedure) type;
+            for type_procedure.argument_types fix_pointers(it);
+            for type_procedure.return_types fix_pointers(it);
+
+        case .STRUCT;
+            type_struct := cast(*Type_Info_Struct) type;
+            for type_struct.specified_parameters fix_pointers(it.type);
+            // assert(type_struct.members.count == 0 || type_struct.members[0].offset_in_bytes == 0, "Struct member at unexpected location. % %\n", type_struct.name, type_struct.members[0].offset_in_bytes);
+            member_offset := 0;
+            // if type_struct.members.count > 0 {
+            //     member_offset =
+            for *member: type_struct.members {
+                member_size := fix_pointers(member.type);
+                if member.offset_into_constant_storage == -1 {
+                    member_offset += member_size;
+                    member.offset_in_bytes = member_offset;
+                }
+            }
+            type.runtime_size = member_offset;
+
+        case .ARRAY;
+            type_array := cast(*Type_Info_Array) type;
+            fix_pointers(type_array.element_type);
+
+        case .TYPE;
+            type.runtime_size = 4;
+            // print("size: %\n", type.runtime_size);
+
+        case;
+            // print("Unsupported type kind. %\n", type.type);
+    }
+
+    return type.runtime_size;
+}
 
 combine_commands :: (a: [] string, b: ..string) -> [] string {
     combined := NewArray(a.count + b.count, string);

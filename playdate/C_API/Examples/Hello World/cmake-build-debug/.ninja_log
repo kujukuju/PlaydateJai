@@ -1,8 +1,0 @@
-# ninja log v5
-0	21	0	CMakeFiles/clean.additional	da1fa6cc0eb4025f
-22	30	0	clean	91dd2c9914578844
-90	352	7603519870813052	hello_world.dll	303a2398fa8b927f
-90	352	7603519870813052	hello_world.lib	303a2398fa8b927f
-6	149	7603573909360405	CMakeFiles/hello_world_DEVICE.dir/C_/Program_Files/PlaydateSDK/C_API/buildsupport/setup.c.obj	143d597822df44b7
-0	151	7603573909370441	CMakeFiles/hello_world_DEVICE.dir/src/main.c.obj	9a79f0516ea69ce
-151	325	7603573910461252	hello_world_DEVICE.elf	9025bcb5ee187fe4
