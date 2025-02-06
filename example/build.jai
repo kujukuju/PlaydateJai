@@ -38,12 +38,25 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
         options.output_type = .STATIC_LIBRARY;
         options.cpu_target = .CUSTOM;
         options.os_target = .NN_SWITCH;
-        options.emit_debug_info = .DWARF;
+        options.emit_debug_info = .NONE;
         options.use_custom_link_command = true;
         options.runtime_support_definitions = .OMIT;
         options.enable_bytecode_inliner = false;
         options.enable_bytecode_deduplication = false;
+        // TODO should be eventHandler since the shim is in setup.c?
         options.entry_point_name = "eventHandlerShim";
+
+        // not necessary group
+        options.backtrace_on_crash = .OFF;
+        options.array_bounds_check = .OFF;
+        options.cast_bounds_check = .OFF;
+        options.null_pointer_check = .OFF;
+        options.arithmetic_overflow_check = .OFF;
+        options.enable_frame_pointers = false;
+
+        // necessary or certain function calls, or all function calls
+        // after pushing context will crash you. maybe it could be fixed if I improve the playdate/runtime_support
+        options.stack_trace = false;
 
         options.dead_code_elimination = .NONE;
         options.lazy_foreign_function_lookups = true;
@@ -240,7 +253,10 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
                     array_add(*clang_command,
                         "clang", "-target", "thumbv7em-none-eabihf",
                         "-mthumb", "-mcpu=cortex-m7", "-mfloat-abi=hard", "-mfpu=fpv5-sp-d16",
-                        "-mlong-calls", "-fpic", "-fPIC", /*"-fno-pic",*/ "-mno-movt", // hack to get it generating absolute addresses as gcc -mword-relocations... at least that's the idea
+                        // hack to get it generating absolute addresses as gcc -mword-relocations... at least that's the idea
+                        // it's necessary for it to run. haven't tested every combination of these though
+                        "-mlong-calls", "-fpic", "-fPIC", /*"-fno-pic",*/ "-mno-movt",
+                        // "-fpack-struct=4", // trying to fix alignment issues
                         "-D__FPU_USED=1", "-O2", "-falign-functions=16", "-fomit-frame-pointer", "-g3", "-gdwarf-2",
                         "-Wall", "-Wno-unused", "-Wstrict-prototypes", "-Wno-unknown-pragmas", "-Wdouble-promotion",
                         "-fverbose-asm", "-fno-common", "-ffunction-sections", "-fdata-sections",
@@ -259,7 +275,6 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
                             "-fverbose-asm", "-Wdouble-promotion", "-mword-relocations", "-fno-common", "-ffunction-sections", "-fdata-sections",
                             "-DTARGET_PLAYDATE=1", "-DTARGET_EXTENSION=1", "-fno-exceptions",
                             tprint("%/C_API/buildsupport/setup.c", sdk_path),
-                            // "-I", "C:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/arm-none-eabi/include",
                             "-I", tprint("%/C_API", sdk_path),
                             "-o", tprint("%.build/setup.o", #filepath));
                     } else {
@@ -299,7 +314,7 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
                     array_add(*command_parts, "-nostartfiles",
                         "-mthumb", "-mcpu=cortex-m7", "-mfloat-abi=hard", "-mfpu=fpv5-sp-d16",
                         "-D__FPU_USED=1",
-                        "-Wl,--cref,--gc-sections,--no-warn-mismatch,--emit-relocs",
+                        "-Wl,--gc-sections,--no-warn-mismatch,--emit-relocs",
                         "-fno-exceptions", "-fno-unwind-tables",
                         "-Wdouble-promotion",
                         // "-mword-relocations",
@@ -332,10 +347,10 @@ build :: (release: bool, optimized_only: bool, simulator: bool, sdk_path: string
 
                     // break;
 
-                    // if should_launch_mirror && !is_mirror_running() {
-                    //     print("Launching mirror...\n");
-                    //     run_mirror();
-                    // }
+                    if should_launch_mirror && !is_mirror_running() {
+                        print("Launching mirror...\n");
+                        run_mirror();
+                    }
                 }
 
             case .COMPLETE;

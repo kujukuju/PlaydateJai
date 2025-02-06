@@ -1,70 +1,83 @@
 
-// pdrealloc: #type (ptr: *void, size: u64) -> *void #c_call;
+pd_context: Context;
 
-// #program_export "eventHandlerShim"
-// eventHandlerShim :: (playdate: *PlaydateAPI, event: PDSystemEvent, arg: u32) -> s32 #c_call {
-//     pdrealloc = playdate.system.realloc;
+// TODO can I make this eventHandler and elsewhere another name?
+playdate_setup :: (pd: *PlaydateAPI) #c_call {
+    // #if OS == .KRAMPOS || OS == .NN_SWITCH {
+    //     // you have to manually assign the flash memory in embedded devices I guess
+    //     dst := __data_start__;
+    //     src := __etext;
+    //     end := __data_end__;
+    //     while dst < end {
+    //         dst.* = src.*;
+    //         dst += 1;
+    //         src += 1;
+    //     }
 
-//     // #if OS == .NONE {
-//         ts := *first_thread_temporary_storage;
-//         set_initial_data(ts, TEMPORARY_STORAGE_SIZE, first_thread_temporary_storage_data.data);
-//         first_thread_context.temporary_storage = ts;
+    //     dst = __bss_start__;
+    //     end = __bss_end__;
+    //     while dst < end {
+    //         dst.* = 0;
+    //         dst += 1;
+    //     }
+    // }
 
-//         allocate_proc :: (mode: Allocator_Mode, size: s64, old_size: s64, old_memory: *void, allocator_data: *void) -> *void {
-//             if mode == {
-//                 case .ALLOCATE;
-//                     return pdrealloc(null, cast(u64) size);
-//                 case .RESIZE;
-//                     return pdrealloc(old_memory, cast(u64) size);
-//                 case .FREE;
-//                     pdrealloc(old_memory, 0);
-//                     return null;
-//                 case;
-//                     return null;
-//             }
-//         }
+    pd_context = .{};
+    pd_temporary_storage = .{};
+    pd_temporary_storage_data_empty: [TEMPORARY_STORAGE_SIZE] u8;
+    pd_temporary_storage_data = pd_temporary_storage_data_empty;
 
-//         first_thread_context.allocator = .{
-//             allocate_proc,
-//             null,
-//         };
+    pdrealloc = pd.system.realloc;
 
-//         ctx := *first_thread_context;
-//     // } else {
-//     //     ctx := __jai_runtime_init(0, null);
-//     // }
+    set_initial_data(*pd_temporary_storage, TEMPORARY_STORAGE_SIZE, pd_temporary_storage_data.data);
+    pd_context.temporary_storage = *pd_temporary_storage;
 
-//     push_context ctx.* {
-//         return eventHandler(playdate, event, arg);
-//     }
-// }
+    allocate_proc :: (mode: Allocator_Mode, size: s64, old_size: s64, old_memory: *void, allocator_data: *void) -> *void {
+        if mode == {
+            case .ALLOCATE;
+                return pdrealloc(null, xx size);
+            case .RESIZE;
+                return pdrealloc(old_memory, xx size);
+            case .FREE;
+                pdrealloc(old_memory, 0);
+                return null;
+            case;
+                return null;
+        }
+    }
 
-#program_export
-_sbrk :: () #c_call {}
+    pd_context.allocator = .{
+        allocate_proc,
+        null,
+    };
+}
 
-#program_export
-_write :: () #c_call {}
+// #program_export
+// _sbrk :: () #c_call {}
 
-#program_export
-_close :: () #c_call {}
+// #program_export
+// _write :: () #c_call {}
 
-#program_export
-_lseek :: () #c_call {}
+// #program_export
+// _close :: () #c_call {}
 
-#program_export
-_read :: () #c_call {}
+// #program_export
+// _lseek :: () #c_call {}
 
-#program_export
-_fstat :: () #c_call {}
+// #program_export
+// _read :: () #c_call {}
 
-#program_export
-_isatty :: () #c_call {}
+// #program_export
+// _fstat :: () #c_call {}
+
+// #program_export
+// _isatty :: () #c_call {}
 
 #program_export
 _exit :: () #c_call {}
 
-#program_export
-_open :: () #c_call {}
+// #program_export
+// _open :: () #c_call {}
 
 #program_export
 _kill :: () #c_call {}
@@ -87,6 +100,21 @@ __exidx_end :: () #c_call {}
 }
 
 #scope_file
+
+__etext: *u8 #elsewhere;
+__data_start__: *u8 #elsewhere;
+__data_end__: *u8 #elsewhere;
+__bss_start__: *u8 #elsewhere;
+__bss_end__: *u8 #elsewhere;
+
+#if OS == .WINDOWS {
+    pdrealloc: #type (ptr: *void, size: u64) -> *void #c_call;
+} else {
+    pdrealloc: #type (ptr: *void, size: u32) -> *void #c_call;
+}
+
+pd_temporary_storage: Temporary_Storage;
+pd_temporary_storage_data: [TEMPORARY_STORAGE_SIZE] u8 #align 64;
 
 // #if OS == .NONE {
     // first_thread_context: Context;

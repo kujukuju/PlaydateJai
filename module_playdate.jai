@@ -105,7 +105,7 @@ PDStringEncoding :: enum s32 {
 }
 
 LCDPattern :: [16] u8;
-LCDColor :: u64;
+LCDColor :: u32;
 
 LCDPolygonFillRule :: enum s32 {
     NonZero :: 0;
@@ -285,7 +285,7 @@ playdate_graphics :: struct {
 #place __drawScaledBitmap;
     drawScaledBitmap:       #type (bitmap: *LCDBitmap, x: s32, y: s32, xscale: float, yscale: float) -> void #c_call = --- #align 4;
 #place __drawText;
-    drawText:               #type (text: *void, len: u64, encoding: PDStringEncoding, x: s32, y: s32) -> s32 #c_call = --- #align 4;
+    drawText:               #type (text: *void, len: u32, encoding: PDStringEncoding, x: s32, y: s32) -> s32 #c_call = --- #align 4;
 
     // LCDBitmap
 #place __newBitmap;
@@ -327,7 +327,7 @@ playdate_graphics :: struct {
 #place __getGlyphKerning;
     getGlyphKerning:        #type (glyph: *LCDFontGlyph, glyphcode: u32, nextcode: u32) -> s32 #c_call = --- #align 4;
 #place __getTextWidth;
-    getTextWidth:           #type (font: *LCDFont, text: *void, len: u64, encoding: PDStringEncoding, tracking: s32) -> s32 #c_call = --- #align 4;
+    getTextWidth:           #type (font: *LCDFont, text: *void, len: u32, encoding: PDStringEncoding, tracking: s32) -> s32 #c_call = --- #align 4;
 
 #place __getFrame;
     getFrame:               #type () -> *u8 #c_call = --- #align 4; // row stride = LCD_ROWSIZE
@@ -394,7 +394,7 @@ playdate_graphics :: struct {
 
     // 2.6
 #place __drawTextInRect;
-    drawTextInRect:         #type (text: *void, len: u64, encoding: PDStringEncoding, x: s32, y: s32, width: s32, height: s32, wrap: PDTextWrappingMode, align: PDTextAlignment) -> void #c_call = --- #align 4;
+    drawTextInRect:         #type (text: *void, len: u32, encoding: PDStringEncoding, x: s32, y: s32, width: s32, height: s32, wrap: PDTextWrappingMode, align: PDTextAlignment) -> void #c_call = --- #align 4;
 }
 
 PDButtons :: enum s32 {
@@ -498,7 +498,7 @@ playdate_sys :: struct {
     __parseString: u32 #align 4;
 
 #place __realloc;
-    realloc:                    #type (ptr: *void, size: u64) -> *void #c_call = --- #align 4; // ptr = NULL -> malloc, size = 0 -> free
+    realloc:                    #type (ptr: *void, size: u32) -> *void #c_call = --- #align 4; // ptr = NULL -> malloc, size = 0 -> free
 #place __formatString;
     formatString:               #type (ret: **u8, fmt: *u8, __args: ..Any) -> s32 #c_call = --- #align 4;
 #place __logToConsole;
@@ -733,7 +733,7 @@ playdate_lua :: struct {
 #place __getArgString;
     getArgString:            #type (pos: s32) -> *u8 #c_call = --- #align 4;
 #place __getArgBytes;
-    getArgBytes:             #type (pos: s32, outlen: *u64) -> *u8 #c_call = --- #align 4;
+    getArgBytes:             #type (pos: s32, outlen: *u32) -> *u8 #c_call = --- #align 4;
 #place __getArgObject;
     getArgObject:            #type (pos: s32, type: *u8, outud: **LuaUDObject) -> *void #c_call = --- #align 4;
 
@@ -754,7 +754,7 @@ playdate_lua :: struct {
 #place __pushString;
     pushString:              #type (str: *u8) -> void #c_call = --- #align 4;
 #place __pushBytes;
-    pushBytes:               #type (str: *u8, len: u64) -> void #c_call = --- #align 4;
+    pushBytes:               #type (str: *u8, len: u32) -> void #c_call = --- #align 4;
 #place __pushBitmap;
     pushBitmap:              #type (bitmap: *LCDBitmap) -> void #c_call = --- #align 4;
 #place __pushSprite;
@@ -2527,13 +2527,13 @@ BoardsListCallback :: #type (boards: *PDBoardsList, errorMessage: *u8) -> void #
 ScoresCallback :: #type (scores: *PDScoresList, errorMessage: *u8) -> void #c_call;
 
 playdate_scoreboards :: struct {
-    __addScore: u32 #align 4
-    __getPersonalBest: u32 #align 4
-    __freeScore: u32 #align 4
-    __getScoreboards: u32 #align 4
-    __freeBoardsList: u32 #align 4
-    __getScores: u32 #align 4
-    __freeScoresList: u32 #align 4
+    __addScore: u32 #align 4;
+    __getPersonalBest: u32 #align 4;
+    __freeScore: u32 #align 4;
+    __getScoreboards: u32 #align 4;
+    __freeBoardsList: u32 #align 4;
+    __getScores: u32 #align 4;
+    __freeScoresList: u32 #align 4;
 
 #place __addScore;
     addScore:        #type (boardId: *u8, value: u32, callback: AddScoreCallback) -> s32 #c_call = --- #align 4;

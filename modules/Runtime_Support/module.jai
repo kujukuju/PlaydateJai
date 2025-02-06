@@ -19,7 +19,7 @@ __element_duplicate :: (start: *u8, num_elements: s64, size: s64) #c_call #no_ao
     }
 }
 
-// write_nonnegative_number :: (n: u64, base := 10, to_standard_error := false) #no_context #no_abc #no_aoc {
+write_nonnegative_number :: (n: u64, base := 10, to_standard_error := false) #no_context #no_abc #no_aoc {
 //     if n == 0 {
 //         write_string("0", to_standard_error);
 //         return;
@@ -55,16 +55,16 @@ __element_duplicate :: (start: *u8, num_elements: s64, size: s64) #c_call #no_ao
 //     s.data  = buf.data + cursor;
 //     s.count = starting_cursor - cursor;
 //     write_string(s, to_standard_error);
-// }
+}
 
-// write_number :: (n: s64, base := 10, to_standard_error := false) #no_context #no_aoc {
+write_number :: (n: s64, base := 10, to_standard_error := false) #no_context #no_aoc {
 //     if n < 0 {
 //         write_string("-", to_standard_error);
 //         n = -n;  // Will overflow if this is the most negative s64.
 //     }
 
 //     write_nonnegative_number(cast,no_check(u64) n, base, to_standard_error = to_standard_error);
-// }
+}
 
 // runtime_support_assertion_failed :: (loc: Source_Code_Location, message: string) -> bool {
 //     write_loc(loc, to_standard_error = true);
@@ -122,21 +122,21 @@ __element_duplicate :: (start: *u8, num_elements: s64, size: s64) #c_call #no_ao
 //     }
 // }
 
-// c_style_strlen :: (str: *u8) -> s64 #no_context {
-//     p := str;
-//     while << p  { p += 1; }
-//     return p - str;
-// }
+c_style_strlen :: (str: *u8) -> s64 #no_context {
+    p := str;
+    while << p  { p += 1; }
+    return p - str;
+}
 
-// to_string :: (c_string: *u8) -> string #no_context {
-//     if c_string == null return "";
+to_string :: (c_string: *u8) -> string #no_context {
+    if c_string == null return "";
 
-//     s: string = ---;
-//     s.data = c_string;
-//     s.count = c_style_strlen(c_string);
+    s: string = ---;
+    s.data = c_string;
+    s.count = c_style_strlen(c_string);
 
-//     return s;
-// }
+    return s;
+}
 
 // // @Incomplete: Pass loc to Runtime_Support versions.
 __array_bounds_check_fail :: (index: s64, limit: s64, line_number: s64, filename: *u8) #no_context {
@@ -324,7 +324,7 @@ __arithmetic_overflow :: (left: s64, right: s64, type_code: u16, line_number: s6
 //     }
 // }
 
-// write_string :: (s: string, to_standard_error := false) #no_context #compiler {
+write_string :: (s: string, to_standard_error := false) #no_context #compiler {
 //     // write_string is marked #compiler because, if called at compile-time, it
 //     // involves a different implementation that also syncs with the compiler's output.
 //     // This runtime version of write_string is just about syncing the threads
@@ -335,9 +335,9 @@ __arithmetic_overflow :: (left: s64, right: s64, type_code: u16, line_number: s6
 //     runtime_support_acquire(*write_string_lock);
 //     write_string_unsynchronized(s, to_standard_error);
 //     runtime_support_release(*write_string_lock);
-// }
+}
 
-// write_strings :: (strings: ..string, to_standard_error := false) #no_context #compiler {
+write_strings :: (strings: ..string, to_standard_error := false) #no_context #compiler {
 //     // write_strings is marked #compiler because, if called at compile-time, it
 //     // involves a different implementation that also syncs with the compiler's output.
 //     // This runtime version of write_strings is just about syncing the threads
@@ -348,7 +348,7 @@ __arithmetic_overflow :: (left: s64, right: s64, type_code: u16, line_number: s6
 //     runtime_support_acquire(*write_string_lock);
 //     for strings write_string_unsynchronized(it, to_standard_error);
 //     runtime_support_release(*write_string_lock);
-// }
+}
 
 // #scope_module;
 
@@ -414,7 +414,7 @@ __panic_due_to_runtime_call_of_compile_time_procedure :: (line_number: s64, file
 
 // compile_time_debug_break :: () #compiler #no_context;
 
-// debug_break :: () #no_context {
+debug_break :: () #no_context {
 //     if #compile_time {
 //         compile_time_debug_break();
 //     } else {
@@ -433,41 +433,41 @@ __panic_due_to_runtime_call_of_compile_time_procedure :: (line_number: s64, file
 //             llvm_trap();
 //         }
 //     }
-// }
+}
 
 // // one_time_init is exposed because maybe user libraries want to use a similar thing.
-// one_time_init :: (synch_value: *s32, to_insert: Code) #expand {
-//     // A routine to run the code in 'to_insert' only once, even if
-//     // there are multiple threads. synch_value.* should be 0 at startup.
+one_time_init :: (synch_value: *s32, to_insert: Code) #expand {
+    // A routine to run the code in 'to_insert' only once, even if
+    // there are multiple threads. synch_value.* should be 0 at startup.
 
-//     // The values of synch_value.*:
-//     // 0 = uninitialized, 1 = in progress init, 2 = initialized.
+    // The values of synch_value.*:
+    // 0 = uninitialized, 1 = in progress init, 2 = initialized.
 
-//     // Courtesy of Jeff Roberts.
+    // Courtesy of Jeff Roberts.
 
-//     while 1 {
-//         // @Warning: Apparently this read may not work on ARM, we need to look into it.
-//         // The goal here is just to avoid the overhead of spamming the compare_and_swap.
-//         if synch_value.* == 2  break;
+    // while 1 {
+    //     // @Warning: Apparently this read may not work on ARM, we need to look into it.
+    //     // The goal here is just to avoid the overhead of spamming the compare_and_swap.
+    //     if synch_value.* == 2  break;
 
-//         old := lock_cmpxchg(synch_value, 0, 1);
-//         if old == {
-//           case 0;
-//             #insert to_insert;
+    //     old := lock_cmpxchg(synch_value, 0, 1);
+    //     if old == {
+    //       case 0;
+    //         #insert to_insert;
 
-//             if lock_cmpxchg(synch_value, 1, 2) != 1  debug_break();  // Should not happen!
-//           case 1;
-//             // Maybe some exponential fall offy thing here?
-//             #if CPU == .X64 {
-//                 for 1..4 #asm { pause; pause; pause; pause; pause; }
-//             }
-//             #if CPU == .ARM64 {
-//                 #bytes .[0x3F, 0x20, 0x03, 0xD5]; // YIELD
-//             }
-//           case 2;
-//         }
-//     }
-// }
+    //         if lock_cmpxchg(synch_value, 1, 2) != 1  debug_break();  // Should not happen!
+    //       case 1;
+    //         // Maybe some exponential fall offy thing here?
+    //         #if CPU == .X64 {
+    //             for 1..4 #asm { pause; pause; pause; pause; pause; }
+    //         }
+    //         #if CPU == .ARM64 {
+    //             #bytes .[0x3F, 0x20, 0x03, 0xD5]; // YIELD
+    //         }
+    //       case 2;
+    //     }
+    // }
+}
 
 // @Volatile: Context_Base must match internal compiler settings in general.h
 // It must exist and be relatively easy to compile (without requiring #run of
@@ -481,7 +481,7 @@ Context_Base :: struct {
 
     allocator      := default_allocator;
 
-    logger         := null;
+    logger         := (message: string, data: *void, info: Log_Info) {};
     logger_data    :  *void;
     log_source_identifier: u64;      // Arbitrary identifier; settable by the main program.
     log_level      :  Log_Level;     // Settable by the main program to inform anyone who logs.
@@ -495,7 +495,7 @@ Context_Base :: struct {
     // null in some cases, rather than needing all that to be #iffed as well. We will see.
     stack_trace: *Stack_Trace_Node;
 
-    assertion_failed := null;
+    assertion_failed := (loc: Source_Code_Location, message: string) -> bool {return false;};
     handling_assertion_failure := false;  // Used to avoid assert() infinite loops. Do not mess with this value.
 
     program_print_plugin: *void;  // This is a dumb field that will go away when we have a better alternative.

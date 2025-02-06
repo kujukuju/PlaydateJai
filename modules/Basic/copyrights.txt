@@ -1,0 +1,68 @@
+
+Copyright for the MAPM code used in string_to_float.jai:
+
+				   MAPM
+
+			       Version 4.9.5a
+
+			     February 21, 2010
+
+			      Michael C. Ring
+
+			     ringx004@umn.edu
+
+		    Latest release will be available at
+		        http://tc.umn.edu/~ringx004
+
+***************************************************************************
+*                                                                         *
+*  Copyright (C) 1999 - 2010   Michael C. Ring                            *
+*                                                                         *
+*  This software is Freeware.                                             *
+*                                                                         *
+*  Permission to use, copy, and distribute this software and its          *
+*  documentation for any purpose with or without fee is hereby granted,   *
+*  provided that the above copyright notice appear in all copies and      *
+*  that both that copyright notice and this permission notice appear      *
+*  in supporting documentation.                                           *
+*                                                                         *
+*  Permission to modify the software is granted. Permission to distribute *
+*  the modified code is granted. Modifications are to be distributed by   *
+*  using the file 'license.txt' as a template to modify the file header.  *
+*  'license.txt' is available in the official MAPM distribution.          *
+*                                                                         *
+*  To distribute modified source code, insert the file 'license.txt'      *
+*  at the top of all modified source code files and edit accordingly.     *
+*                                                                         *
+*  This software is provided "as is" without express or implied warranty. *
+*                                                                         *
+***************************************************************************
+
+See the actual MAPM distribution for full information.
+
+
+
+
+Copyright for the string_to_float64 code in string_to_float.jai:
+
+MIT License
+
+Copyright (c) 2018 Albert Chan
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
